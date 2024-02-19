@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import './App.css';
 
-import { Demo } from '~shared/organisms';
+import { Demo } from '~shared';
 
 const queryClient = new QueryClient();
 
