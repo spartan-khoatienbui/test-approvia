@@ -23,12 +23,6 @@ const schema = yup
   })
   .required();
 
-interface IFormInput {
-  email: string;
-  password: string;
-  rememberMe?: boolean;
-}
-
 export function SignInForm() {
   const {
     control,
@@ -43,7 +37,7 @@ export function SignInForm() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<yup.InferType<typeof schema>> = (data) => {
     console.log(data);
   };
 
@@ -51,7 +45,6 @@ export function SignInForm() {
     <>
       <Box
         sx={{
-          marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
