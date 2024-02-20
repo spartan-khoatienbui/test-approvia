@@ -15,13 +15,18 @@ import * as yup from 'yup';
 const schema = yup
   .object({
     email: yup.string().email('Invalid email').required('Email is required'),
-    password: yup.string().required('Email is required'),
+    password: yup
+      .string()
+      .min(8, 'Password must be more than 8 characters')
+      .required('Password is required'),
+    rememberMe: yup.boolean(),
   })
   .required();
 
 interface IFormInput {
   email: string;
   password: string;
+  rememberMe?: boolean;
 }
 
 export function SignInForm() {
@@ -33,6 +38,7 @@ export function SignInForm() {
     defaultValues: {
       email: '',
       password: '',
+      rememberMe: false,
     },
     resolver: yupResolver(schema),
   });
@@ -94,11 +100,18 @@ export function SignInForm() {
               />
             )}
           />
-
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+          <Controller
+            name="rememberMe"
+            control={control}
+            defaultValue={false}
+            render={({ field }) => (
+              <FormControlLabel
+                control={<Checkbox {...field} color="primary" />}
+                label="Remember me"
+              />
+            )}
           />
+
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
             Sign In
           </Button>
