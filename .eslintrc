@@ -10,18 +10,27 @@
   ],
   "ignorePatterns": ["dist", ".eslintrc"],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react-refresh", "unused-imports", "simple-import-sort", "prettier"],
+  "plugins": ["@typescript-eslint", "react-refresh", "unused-imports", "simple-import-sort", "prettier"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
-    "react-refresh/only-export-components": [
-      "warn",
-      { "allowConstantExport": true }
-    ],
+    "no-console": [1],
     "prettier/prettier": [
       "error",
       {
         "endOfLine": "auto"
+      }
+    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
       }
     ]
   },
