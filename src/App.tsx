@@ -1,23 +1,26 @@
-import { RouterProvider } from 'react-router-dom';
-import { Container, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { Suspense } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { router } from './routers';
+import { Router } from '~routers';
+import { ThemeProvider } from '~shared';
 
 const queryClient = new QueryClient();
 
-const defaultTheme = createTheme();
-
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={defaultTheme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <RouterProvider router={router} />
-        </Container>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Suspense>
+            <ThemeProvider>
+              <Router />
+            </ThemeProvider>
+          </Suspense>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 
