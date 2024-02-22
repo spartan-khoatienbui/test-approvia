@@ -1,5 +1,7 @@
-import { lazy } from 'react';
-import { Navigate, useRoutes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { Navigate, Outlet, useRoutes } from 'react-router-dom';
+
+import { DashboardLayout } from '~shared';
 
 export const LoginPage = lazy(() => import('~modules/login'));
 export const Page404 = lazy(() => import('~shared/pages/NotFoundPage'));
@@ -9,7 +11,16 @@ export const Page404 = lazy(() => import('~shared/pages/NotFoundPage'));
 export default function Router() {
   const routes = useRoutes([
     {
-      path: '/',
+      element: (
+        <DashboardLayout>
+          <Suspense>
+            <Outlet />
+          </Suspense>
+        </DashboardLayout>
+      ),
+    },
+    {
+      path: '/login',
       element: <LoginPage />,
     },
     {

@@ -9,7 +9,7 @@ import { RouterLink } from '~routers';
 
 // ----------------------------------------------------------------------
 
-export const NotFoundView = () => {
+const NotFoundView = () => {
   const renderHeader = (
     <Box
       component="header"
@@ -71,3 +71,5 @@ export const NotFoundView = () => {
     </>
   );
 };
+
+export default NotFoundView;
