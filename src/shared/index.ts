@@ -4,3 +4,4 @@ export * from './pages';
 export * from './providers';
 export * from './services';
 export * from './themes';
+export * from './types';

@@ -8,7 +8,7 @@ export function fDate(date: string | number | Date, newFormat: string) {
   return date ? format(new Date(date), fm) : '';
 }
 
-export function fDateTime(date: string | number | Date, newFormat: string) {
+export function fDateTime(date: string | number | Date, newFormat?: string) {
   const fm = newFormat || 'dd MMM yyyy p';
 
   return date ? format(new Date(date), fm) : '';

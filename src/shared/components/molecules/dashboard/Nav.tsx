@@ -190,7 +190,7 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
         {item.icon}
       </Box>
 
-      <Box component="span">{item.title} </Box>
+      <Box component="span">{item.title}</Box>
     </ListItemButton>
   );
 };

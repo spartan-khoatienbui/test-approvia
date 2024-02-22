@@ -1,3 +1,4 @@
+export { default as Chart } from './Chart';
 export { default as Iconify } from './Iconify';
 export { default as Logo } from './Logo';
 export { default as Scrollbar } from './Scrollbar';
