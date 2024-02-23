@@ -1,0 +1,14 @@
+import { Helmet } from 'react-helmet-async';
+
+import { UserView } from './components';
+
+export default function UserPage() {
+  return (
+    <>
+      <Helmet>
+        <title> User | Minimal UI </title>
+      </Helmet>
+      <UserView />
+    </>
+  );
+}

@@ -4,6 +4,7 @@ import { Navigate, Outlet, useRoutes } from 'react-router-dom';
 import { DashboardLayout } from '~shared';
 
 export const LoginPage = lazy(() => import('~modules/login'));
+export const UserPage = lazy(() => import('~modules/user'));
 export const OverviewPage = lazy(() => import('~modules/overview'));
 export const Page404 = lazy(() => import('~shared/pages/NotFoundPage'));
 
@@ -19,7 +20,10 @@ export default function Router() {
           </Suspense>
         </DashboardLayout>
       ),
-      children: [{ element: <OverviewPage />, index: true }],
+      children: [
+        { element: <OverviewPage />, index: true },
+        { path: 'user', element: <UserPage /> },
+      ],
     },
     {
       path: '/login',
