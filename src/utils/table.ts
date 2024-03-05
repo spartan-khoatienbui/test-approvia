@@ -1,3 +1,5 @@
+import { SortOrder } from '~shared/types/table.ts';
+
 export const visuallyHidden = {
   border: 0,
   margin: -1,
@@ -30,7 +32,11 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   return 0;
 }
 
-export function getComparator<T>(order: 'asc' | 'desc', orderBy: keyof T) {
+export function getComparator<T>(
+  order: 'asc' | 'desc',
+  orderBy: keyof T | undefined
+): (a: T, b: T) => number {
+  if (!orderBy) return () => 1;
   return order === 'desc'
     ? (a: T, b: T) => descendingComparator(a, b, orderBy)
     : (a: T, b: T) => -descendingComparator(a, b, orderBy);
@@ -38,7 +44,7 @@ export function getComparator<T>(order: 'asc' | 'desc', orderBy: keyof T) {
 
 interface Filter<T> {
   inputData: T[];
-  comparator: ReturnType<typeof getComparator>;
+  comparator: (a: T, b: T) => number;
   filterName: string;
 }
 
@@ -65,3 +71,8 @@ export function applyFilter<T extends { name: string }>({
 
   return inputData;
 }
+
+const SORT_ORDER_ORDER: SortOrder[] = ['desc', 'asc', undefined];
+
+export const nextSortOrder = (sortOrder?: SortOrder): SortOrder =>
+  SORT_ORDER_ORDER[SORT_ORDER_ORDER.indexOf(sortOrder) + 1] || SORT_ORDER_ORDER[0];

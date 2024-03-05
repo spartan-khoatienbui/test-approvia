@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography';
 // ----------------------------------------------------------------------
 
 type Props = {
-  query: string;
+  query?: string;
 };
 
-const TableNoData: React.FC<Props> = ({ query }) => {
+const TableNoData: React.FC<Props> = ({ query = '' }) => {
   return (
     <TableRow>
       <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
@@ -22,11 +22,15 @@ const TableNoData: React.FC<Props> = ({ query }) => {
             Not found
           </Typography>
 
-          <Typography variant="body2">
-            No results found for &nbsp;
-            <strong>&quot;{query}&quot;</strong>.
-            <br /> Try checking for typos or using complete words.
-          </Typography>
+          {query ? (
+            <Typography variant="body2">
+              No results found for &nbsp;
+              <strong>&quot;{query}&quot;</strong>.
+              <br /> Try checking for typos or using complete words.
+            </Typography>
+          ) : (
+            <Typography variant="body2">No results found</Typography>
+          )}
         </Paper>
       </TableCell>
     </TableRow>
