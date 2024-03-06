@@ -1,7 +1,8 @@
 import { lazy, Suspense } from 'react';
-import { Navigate, Outlet, useRoutes } from 'react-router-dom';
+import { defer, Navigate, Outlet, useRoutes } from 'react-router-dom';
 
-import { DashboardLayout } from '~shared';
+import { AuthLayout, DashboardLayout, inMemoryJWTService } from '~shared';
+import { AuthProvider, RequireAuth } from '~shared/providers/AuthProvider';
 
 export const LoginPage = lazy(() => import('~modules/login'));
 export const UserPage = lazy(() => import('~modules/user'));
@@ -13,21 +14,40 @@ export const Page404 = lazy(() => import('~shared/pages/NotFoundPage'));
 export default function Router() {
   const routes = useRoutes([
     {
-      element: (
-        <DashboardLayout>
-          <Suspense>
-            <Outlet />
-          </Suspense>
-        </DashboardLayout>
-      ),
+      element: <AuthLayout />,
+      loader: async () => {
+        const userPromise = inMemoryJWTService.getNewAccessToken();
+
+        return defer({
+          userPromise,
+        });
+      },
       children: [
-        { element: <OverviewPage />, index: true },
-        { path: 'user', element: <UserPage /> },
+        {
+          path: '/',
+          element: (
+            <RequireAuth>
+              <DashboardLayout>
+                <Suspense>
+                  <Outlet />
+                </Suspense>
+              </DashboardLayout>
+            </RequireAuth>
+          ),
+          children: [
+            { element: <OverviewPage />, index: true },
+            { path: 'user', element: <UserPage /> },
+          ],
+        },
       ],
     },
     {
       path: '/login',
-      element: <LoginPage />,
+      element: (
+        <AuthProvider>
+          <LoginPage />
+        </AuthProvider>
+      ),
     },
     {
       path: '404',
