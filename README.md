@@ -8,13 +8,22 @@
 
 ### Table of Contents
 
-- [What are people using it for?](#what-are-people-using-it-for)
-- [Prerequisites](#prerequisites)
-- [Key Features](#key-features)
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Spartan-React](#spartan-react)
+    - [What are people using it for](#what-are-people-using-it-for)
+    - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Key Features](#key-features)
+    - [Lint Features](#lint-features)
+    - [Theme Features](#theme-features)
+    - [Query Features](#query-features)
+    - [Chart Features](#chart-features)
+    - [Page Routing Features](#page-routing-features)
+    - [Form Features](#form-features)
+    - [Testing Features](#testing-features)
+  - [Installation](#installation)
+  - [Project Structure](#project-structure)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
@@ -74,7 +83,7 @@
 2. **Clone the repository:**
 
    ```bash
-   git clone git@github.com:foresight-reporting/web-platform.git
+   git clone git@github.com:c0x12c/spartan-template-react.git
    ```
 
 3. **Navigate to the project folder:**
