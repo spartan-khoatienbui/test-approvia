@@ -1,9 +1,10 @@
 import TableBody from '@mui/material/TableBody';
 
-import CustomTableRow from '~shared/components/molecules/table/CustomTableRow.tsx';
-import TableEmptyRows from '~shared/components/molecules/table/TableEmptyRows.tsx';
-import TableNoData from '~shared/components/molecules/table/TableNoData.tsx';
-import { TableColumn, TableItem } from '~shared/types/table.ts';
+import CustomTableRow from './CustomTableRow';
+import TableEmptyRows from './TableEmptyRows';
+import TableNoData from './TableNoData';
+
+import { ITableColumn, ITableItem } from '~shared';
 
 // ----------------------------------------------------------------------
 
@@ -20,11 +21,11 @@ type Props<T> = {
 
   filterName?: string;
   emptyRows?: number;
-  columns: TableColumn<T>[];
+  columns: ITableColumn<T>[];
   data: T[];
 };
 
-const CustomTableBody = <T extends TableItem>({
+const CustomTableBody = <T extends ITableItem>({
   selectedItemIds = [],
   onRowSelectChange,
   selectable = false,

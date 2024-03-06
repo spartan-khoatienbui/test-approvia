@@ -3,7 +3,7 @@ import Checkbox from '@mui/material/Checkbox';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-import { TableColumn, TableItem } from '~shared/types/table.ts';
+import { ITableColumn, ITableItem } from '~shared';
 
 // ----------------------------------------------------------------------
 
@@ -14,10 +14,10 @@ type Props<T> = {
   selectable: boolean;
   index: number;
   rowData: T;
-  columns: TableColumn<T>[];
+  columns: ITableColumn<T>[];
 };
 
-const CustomTableRow = <T extends TableItem>({
+const CustomTableRow = <T extends ITableItem>({
   columns,
   selectable,
   index,

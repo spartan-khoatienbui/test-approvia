@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 
-import { SortOrder } from '~shared/types/table.ts';
+import { TSortOrder } from '~shared';
 import { nextSortOrder } from '~utils';
 
 const useTableSort = <T extends { name: string }>() => {
-  const [sortOrder, setSortOrder] = useState<SortOrder>();
+  const [sortOrder, setSortOrder] = useState<TSortOrder>();
   const [sortBy, setSortBy] = useState<keyof T>('name');
 
   const onSort = useCallback((event: React.SyntheticEvent, updateSortBy: keyof T) => {

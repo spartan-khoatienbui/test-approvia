@@ -5,13 +5,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 
-import { SortOrder, TableColumn, TableItem } from '~shared/types/table.ts';
+import { ITableColumn, ITableItem, TSortOrder } from '~shared';
 import { visuallyHidden } from '~utils';
 
 // ----------------------------------------------------------------------
 
 type Props<T> = {
-  sortOrder?: SortOrder;
+  sortOrder?: TSortOrder;
   sortBy?: string;
   rowCount?: number;
   numSelected?: number;
@@ -22,10 +22,10 @@ type Props<T> = {
   isSelectedAll?: boolean;
   selectedItemIds?: string[];
 
-  columns: TableColumn<T>[];
+  columns: ITableColumn<T>[];
 };
 
-const CustomTableHead = <T extends TableItem>({
+const CustomTableHead = <T extends ITableItem>({
   columns,
   selectable = false,
   isSelectedAll = false,

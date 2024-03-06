@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { TableItem } from '~shared';
+import { ITableItem } from '~shared';
 
-const useTableSelection = <T extends TableItem>(tableData: T[]) => {
+const useTableSelection = <T extends ITableItem>(tableData: T[]) => {
   const [selectedItemIds, setSelectedItemIds] = useState<string[]>([]);
 
   useEffect(() => {

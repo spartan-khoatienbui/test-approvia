@@ -1,18 +1,18 @@
 import { ReactNode } from 'react';
 import { TableCellProps } from '@mui/material/TableCell';
 
-export type SortOrder = 'desc' | 'asc' | undefined;
+export type TSortOrder = 'desc' | 'asc' | undefined;
 
-export interface SortInfo {
-  sortOrder: SortOrder;
+export interface ISortInfo {
+  sortOrder: TSortOrder;
   sortBy: string;
 }
 
-export interface TableItem {
+export interface ITableItem {
   id: string;
 }
 
-export interface TableColumn<T> {
+export interface ITableColumn<T> {
   key: string;
   label: string;
   props?: TableCellProps;

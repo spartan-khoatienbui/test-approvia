@@ -2,12 +2,13 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-import { IUser } from '~configs';
-import UserActionButton from '~modules/user/components/molecules/UserActionButton.tsx';
-import { Label } from '~shared';
-import { TableColumn } from '~shared/types/table.ts';
+import { UserActionButton } from '../components';
 
-export const USER_VIEW_TABLE_COLUMNS: TableColumn<IUser>[] = [
+import { IUser } from '~configs';
+import { Label } from '~shared';
+import { ITableColumn } from '~shared';
+
+export const USER_VIEW_TABLE_COLUMNS: ITableColumn<IUser>[] = [
   {
     key: 'name',
     label: 'Name',

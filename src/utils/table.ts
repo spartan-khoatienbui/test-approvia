@@ -1,4 +1,4 @@
-import { SortOrder } from '~shared/types/table.ts';
+import { TSortOrder } from '~shared';
 
 export const visuallyHidden = {
   border: 0,
@@ -72,7 +72,7 @@ export function applyFilter<T extends { name: string }>({
   return inputData;
 }
 
-const SORT_ORDER_ORDER: SortOrder[] = ['desc', 'asc', undefined];
+const SORT_ORDER_ORDER: TSortOrder[] = ['desc', 'asc', undefined];
 
-export const nextSortOrder = (sortOrder?: SortOrder): SortOrder =>
+export const nextSortOrder = (sortOrder?: TSortOrder): TSortOrder =>
   SORT_ORDER_ORDER[SORT_ORDER_ORDER.indexOf(sortOrder) + 1] || SORT_ORDER_ORDER[0];

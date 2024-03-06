@@ -2,12 +2,13 @@ import { CheckboxProps } from '@mui/material/Checkbox';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 
-import CustomTableBody from '~shared/components/molecules/table/CustomTableBody.tsx';
-import CustomTableHead from '~shared/components/molecules/table/CustomTableHead.tsx';
-import { SortOrder, TableColumn, TableItem } from '~shared/types/table.ts';
+import CustomTableBody from './CustomTableBody';
+import CustomTableHead from './CustomTableHead';
+
+import { ITableColumn, ITableItem, TSortOrder } from '~shared';
 
 type Props<T> = {
-  sortOrder?: SortOrder;
+  sortOrder?: TSortOrder;
   sortBy?: string;
   rowCount?: number;
   onRequestSort?: (event: React.SyntheticEvent, property: string) => void;
@@ -21,11 +22,11 @@ type Props<T> = {
 
   filterName?: string;
   emptyRows?: number;
-  columns: TableColumn<T>[];
+  columns: ITableColumn<T>[];
   data: T[];
 };
 
-const CustomTable = <T extends TableItem>({
+const CustomTable = <T extends ITableItem>({
   columns,
   data,
   emptyRows = 0,
