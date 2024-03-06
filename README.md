@@ -22,6 +22,7 @@
     - [Testing Features](#testing-features)
   - [Installation](#installation)
   - [Project Structure](#project-structure)
+  - [Typescript naming convention](#typescript-naming-convention)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -188,6 +189,15 @@
 │   ├── Button.tsx
 │   ├── button.css
 ```
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
+## Typescript naming convention
+
+1. enum = `UserStatus` following CamelCase
+2. interface = `IUserStatus` prefix with `I`
+3. type = `TUserStatus` prefix With `T`
+4. constant = `USER_STATUS` uppercase all character following snake_case
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
