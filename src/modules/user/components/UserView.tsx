@@ -4,43 +4,37 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import TablePagination, { TablePaginationOwnProps } from '@mui/material/TablePagination';
+import TablePagination from '@mui/material/TablePagination';
 import Typography from '@mui/material/Typography';
 
 import { USER_VIEW_TABLE_COLUMNS } from '../constants';
 
 import { UserTableToolbar } from './molecules';
 
-import { IUser, users } from '~configs';
-import { Iconify, Scrollbar, Table, useTableSelection, useTableSort } from '~shared';
+import { DEFAULT_ROW_PER_PAGES, IUser, users } from '~configs';
+import {
+  Iconify,
+  Scrollbar,
+  Table,
+  useTablePagination,
+  useTableSelection,
+  useTableSort,
+} from '~shared';
 import { applyFilter, emptyRows, getComparator } from '~utils';
 
 // ----------------------------------------------------------------------
 
 export default function UserPage() {
-  const [page, setPage] = useState(0);
-
   const [filterName, setFilterName] = useState('');
 
-  const [rowsPerPage, setRowsPerPage] = useState(5);
-
-  const handleChangePage: TablePaginationOwnProps['onPageChange'] = (event, newPage) => {
-    event?.stopPropagation();
-    event?.preventDefault();
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage: TablePaginationOwnProps['onRowsPerPageChange'] = (event) => {
-    setPage(0);
-    setRowsPerPage(parseInt(event.target.value, 10));
-  };
+  const { page, rowsPerPage, handleChangeRowsPerPage, handleChangePage, toFirstPage } =
+    useTablePagination();
+  const { sortBy, sortOrder, onSort } = useTableSort<IUser>();
 
   const handleFilterByName: OutlinedInputProps['onChange'] = (event) => {
-    setPage(0);
+    toFirstPage();
     setFilterName(event.target.value);
   };
-
-  const { sortBy, sortOrder, onSort } = useTableSort<IUser>();
 
   const dataFiltered = useMemo(
     () =>
@@ -94,7 +88,7 @@ export default function UserPage() {
           count={users.length}
           rowsPerPage={rowsPerPage}
           onPageChange={handleChangePage}
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={DEFAULT_ROW_PER_PAGES}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>
