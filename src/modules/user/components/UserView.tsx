@@ -1,25 +1,18 @@
-import { useState } from 'react';
-import { CheckboxProps, OutlinedInputProps } from '@mui/material';
+import { useMemo, useState } from 'react';
+import { OutlinedInputProps } from '@mui/material';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
 import TablePagination, { TablePaginationOwnProps } from '@mui/material/TablePagination';
 import Typography from '@mui/material/Typography';
 
-import {
-  TableEmptyRows,
-  TableNoData,
-  UserTableHead,
-  UserTableRow,
-  UserTableToolbar,
-} from './molecules';
+import { USER_VIEW_TABLE_COLUMNS } from '../constants';
 
-import { users } from '~configs';
-import { Iconify, Scrollbar } from '~shared';
+import { UserTableToolbar } from './molecules';
+
+import { IUser, users } from '~configs';
+import { Iconify, Scrollbar, Table, useTableSelection, useTableSort } from '~shared';
 import { applyFilter, emptyRows, getComparator } from '~utils';
 
 // ----------------------------------------------------------------------
@@ -27,54 +20,9 @@ import { applyFilter, emptyRows, getComparator } from '~utils';
 export default function UserPage() {
   const [page, setPage] = useState(0);
 
-  const [order, setOrder] = useState<'asc' | 'desc'>('asc');
-
-  const [selected, setSelected] = useState<string[]>([]);
-
-  const [orderBy, setOrderBy] = useState('name');
-
   const [filterName, setFilterName] = useState('');
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
-  const handleSort = (event: React.SyntheticEvent, id: string) => {
-    event?.stopPropagation();
-    const isAsc = orderBy === id && order === 'asc';
-    if (id !== '') {
-      setOrder(isAsc ? 'desc' : 'asc');
-      setOrderBy(id);
-    }
-  };
-
-  const handleSelectAllClick: CheckboxProps['onChange'] = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = users.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
-
-  const handleClick = (event: React.ChangeEvent<HTMLInputElement>, name: string) => {
-    event.stopPropagation();
-    event.preventDefault();
-
-    const selectedIndex = selected.indexOf(name);
-    let newSelected: string[] = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
-  };
 
   const handleChangePage: TablePaginationOwnProps['onPageChange'] = (event, newPage) => {
     event?.stopPropagation();
@@ -92,13 +40,20 @@ export default function UserPage() {
     setFilterName(event.target.value);
   };
 
-  const dataFiltered = applyFilter({
-    inputData: users,
-    comparator: getComparator(order, orderBy),
-    filterName,
-  });
+  const { sortBy, sortOrder, onSort } = useTableSort<IUser>();
 
-  const notFound = !dataFiltered.length && !!filterName;
+  const dataFiltered = useMemo(
+    () =>
+      applyFilter<IUser>({
+        inputData: users,
+        comparator: getComparator<IUser>(sortOrder || 'desc', sortBy),
+        filterName,
+      }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage),
+    [filterName, sortOrder, sortBy, page, rowsPerPage]
+  );
+
+  const { onRowSelectChange, isSelectedAll, onSelectAllChange, selectedItemIds } =
+    useTableSelection<IUser>(dataFiltered);
 
   return (
     <Container>
@@ -112,56 +67,25 @@ export default function UserPage() {
 
       <Card>
         <UserTableToolbar
-          numSelected={selected.length}
+          numSelected={selectedItemIds.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
         />
 
         <Scrollbar>
-          <TableContainer sx={{ overflow: 'unset' }}>
-            <Table sx={{ minWidth: 800 }}>
-              <UserTableHead
-                order={order}
-                orderBy={orderBy}
-                rowCount={users.length}
-                numSelected={selected.length}
-                onRequestSort={handleSort}
-                onSelectAllClick={handleSelectAllClick}
-                headLabel={[
-                  { id: 'name', label: 'Name' },
-                  { id: 'company', label: 'Company' },
-                  { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
-                  { id: '' },
-                ]}
-              />
-              <TableBody>
-                {dataFiltered
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row: (typeof users)[0]) => (
-                    <UserTableRow
-                      key={row.id}
-                      name={row.name}
-                      role={row.role}
-                      status={row.status}
-                      company={row.company}
-                      avatarUrl={row.avatarUrl}
-                      isVerified={row.isVerified}
-                      selected={selected.indexOf(row.name) !== -1}
-                      handleClick={(event) => handleClick(event, row.name)}
-                    />
-                  ))}
-
-                <TableEmptyRows
-                  height={77}
-                  emptyRows={emptyRows(page, rowsPerPage, users.length)}
-                />
-
-                {notFound && <TableNoData query={filterName} />}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <Table
+            columns={USER_VIEW_TABLE_COLUMNS}
+            data={dataFiltered}
+            emptyRows={emptyRows(page, rowsPerPage, users.length)}
+            onSort={onSort}
+            sortBy={sortBy}
+            sortOrder={sortOrder}
+            isSelectedAll={isSelectedAll}
+            selectedItemIds={selectedItemIds}
+            onRowSelectChange={onRowSelectChange}
+            onSelectAllChange={onSelectAllChange}
+            selectable
+          />
         </Scrollbar>
 
         <TablePagination
