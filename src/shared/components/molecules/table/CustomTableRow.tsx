@@ -39,7 +39,7 @@ const CustomTableRow = <T extends ITableItem>({
           </TableCell>
         )}
         {columns.map((column) => (
-          <TableCell {...(column.props || {})} {...(column.bodyProps || {})}>
+          <TableCell key={column.key} {...(column.props || {})} {...(column.bodyProps || {})}>
             {column.itemShouldRender?.(rowData, index) || get(rowData, column.key, '')}
           </TableCell>
         ))}
