@@ -10,6 +10,7 @@ import { alpha } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
 import { account } from '~configs';
+import { useAuth } from '~shared/providers';
 
 // ----------------------------------------------------------------------
 
@@ -31,6 +32,7 @@ const MENU_OPTIONS = [
 // ----------------------------------------------------------------------
 
 const AccountPopover: React.FC = () => {
+  const { signOut } = useAuth();
   const [open, setOpen] = useState<(EventTarget & HTMLButtonElement) | null>(null);
 
   const handleOpen: ButtonBaseProps['onClick'] = (event) => {
@@ -39,6 +41,11 @@ const AccountPopover: React.FC = () => {
 
   const handleClose = () => {
     setOpen(null);
+  };
+
+  const handleLogout = () => {
+    setOpen(null);
+    signOut();
   };
 
   return (
@@ -105,7 +112,7 @@ const AccountPopover: React.FC = () => {
         <MenuItem
           disableRipple
           disableTouchRipple
-          onClick={handleClose}
+          onClick={handleLogout}
           sx={{ typography: 'body2', color: 'error.main', py: 1.5 }}
         >
           Logout

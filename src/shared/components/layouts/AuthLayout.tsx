@@ -1,14 +1,13 @@
 import { Suspense } from 'react';
-import { Await, Navigate, Outlet } from 'react-router-dom';
+import { Await, Navigate, Outlet, useLoaderData } from 'react-router-dom';
 import LinearProgress from '@mui/material/LinearProgress';
 
-import { AuthProvider } from '~shared/providers/AuthProvider';
+import { AuthProvider } from '~shared';
 
 const AuthLayout = () => {
-  //   const { userPromise } = useLoaderData() as {
-  //     userPromise: Promise<unknown>;
-  //   };
-  const userPromise = {};
+  const { userPromise } = useLoaderData() as {
+    userPromise: Promise<unknown>;
+  };
 
   return (
     <Suspense fallback={<LinearProgress />}>

@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 
 import { postRequest } from './client.service';
 
-interface UserInfo {
+interface IUserInfo {
   accessToken: string;
   expiresIn: number;
   refreshToken: string;
@@ -62,7 +62,6 @@ export const inMemoryJWTManager = () => {
   // If there is a valid cookie, the endpoint will return a fresh jwt.
   const getNewAccessToken = () => {
     // page reload, refreshToken in memory lost, get it from local storage
-
     if (!refreshToken) {
       refreshToken = localStorage.getItem(REFRESH_TOKEN_LS_KEY) ?? '';
     }
@@ -73,7 +72,7 @@ export const inMemoryJWTManager = () => {
     }
 
     return postRequest({
-      path: 'api/oauth/access-token',
+      path: 'access-token',
       data: {
         refresh_token: refreshToken,
         grant_type: 'refresh_token',
@@ -88,7 +87,7 @@ export const inMemoryJWTManager = () => {
         }
         return response.data;
       })
-      .then((userInfo: UserInfo) => {
+      .then((userInfo: IUserInfo) => {
         if (userInfo.accessToken) {
           setToken(userInfo.accessToken, userInfo.expiresIn);
         }
