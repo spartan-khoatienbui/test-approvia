@@ -24,7 +24,7 @@ export const axiosClient = applyCaseMiddleware(
 
 export const getRequest = async <T>({ path, config, customHeader, params }: GetParams<T>) => {
   const token = inMemoryJWTService.getToken();
-  const response = await axiosClient.get(`/${path}`, {
+  const response = await axiosClient.get(path, {
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ export const getRequest = async <T>({ path, config, customHeader, params }: GetP
 
 export const postRequest = <T>({ path, config, customHeader, data }: PostParams<T>) => {
   const token = inMemoryJWTService.getToken();
-  return axiosClient.post(`/${path}`, data, {
+  return axiosClient.post(path, data, {
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ export const postRequest = <T>({ path, config, customHeader, data }: PostParams<
 
 export const putRequest = <T>({ path, config, customHeader, data }: PostParams<T>) => {
   const token = inMemoryJWTService.getToken();
-  return axiosClient.put(`/${path}`, data, {
+  return axiosClient.put(`${path}`, data, {
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${token}`,
@@ -62,7 +62,7 @@ export const putRequest = <T>({ path, config, customHeader, data }: PostParams<T
 
 export const patchRequest = <T>({ path, config, customHeader, data }: PostParams<T>) => {
   const token = inMemoryJWTService.getToken();
-  return axiosClient.patch(`/${path}`, data, {
+  return axiosClient.patch(path, data, {
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${token}`,
@@ -74,7 +74,7 @@ export const patchRequest = <T>({ path, config, customHeader, data }: PostParams
 
 export const delRequest = <T>({ path, config, customHeader }: GetParams<T>) => {
   const token = inMemoryJWTService.getToken();
-  return axiosClient.delete(`/${path}`, {
+  return axiosClient.delete(path, {
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${token}`,

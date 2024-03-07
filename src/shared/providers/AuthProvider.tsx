@@ -5,17 +5,15 @@ import { createContext, useContext } from 'use-context-selector';
 
 import { axiosClient, inMemoryJWTService } from '..';
 
-interface AuthContextType {
+import { HOME_ROUTE, LOGIN_ROUTE } from '~routers';
+
+interface IAuthContext {
   signIn: (credential: Record<string, unknown>) => Promise<void>;
   signOut: () => void;
   clearUserInfo: () => void;
 }
 
-const AuthContext = createContext<AuthContextType>({
-  signIn: () => Promise.resolve(),
-  signOut: () => null,
-  clearUserInfo: () => null,
-});
+const AuthContext = createContext<IAuthContext | undefined>(undefined);
 
 type Props = {
   children: React.ReactNode;
@@ -27,15 +25,24 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
 
   const signIn = useCallback(
     async (credential: Record<string, unknown>) => {
-      const { data } = await axiosClient.post('/login', {
-        username: credential.email,
-        password: credential.password,
-      });
-      const { accessToken, refreshToken, expiresIn } = data;
-      inMemoryJWTService.setToken(accessToken, expiresIn);
-      inMemoryJWTService.setRefreshToken(refreshToken);
-      queryClient.resetQueries();
-      navigate('/', { replace: true });
+      try {
+        const { data } = await axiosClient.post('/login', {
+          username: credential.email,
+          password: credential.password,
+        });
+
+        const { accessToken, refreshToken, expiresIn } = data;
+
+        inMemoryJWTService.setToken(accessToken, expiresIn);
+        inMemoryJWTService.setRefreshToken(refreshToken);
+
+        queryClient.resetQueries();
+
+        navigate(HOME_ROUTE, { replace: true });
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      }
     },
     [navigate, queryClient]
   );
@@ -46,7 +53,8 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
   };
 
   const signOut = useCallback(() => {
-    navigate('/login', { replace: true });
+    clearUserInfo();
+    navigate(LOGIN_ROUTE, { replace: true });
   }, [navigate]);
 
   const value = useMemo(() => ({ signIn, signOut, clearUserInfo }), [signIn, signOut]);
@@ -54,7 +62,13 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within a AuthProvider');
+  }
+  return context;
+};
 
 type RequireAuthProps = {
   children: JSX.Element;
@@ -66,7 +80,7 @@ export const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience
     // than dropping them off on the home page.
-    return <Navigate to="/login" replace={true} />;
+    return <Navigate to={LOGIN_ROUTE} replace={true} />;
   }
 
   return children;

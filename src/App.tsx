@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { Router } from '~routers';
+import { router } from '~routers';
 import { ThemeProvider } from '~shared';
 
 const queryClient = new QueryClient();
@@ -12,13 +12,11 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <ThemeProvider>
           <Suspense>
-            <ThemeProvider>
-              <Router />
-            </ThemeProvider>
+            <RouterProvider router={router} />
           </Suspense>
-        </BrowserRouter>
+        </ThemeProvider>
       </QueryClientProvider>
     </HelmetProvider>
   );
