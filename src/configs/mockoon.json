@@ -1,0 +1,125 @@
+{
+    "uuid": "ade9687f-b86f-424a-89cc-a28f97d68794",
+    "lastMigration": 32,
+    "name": "Demo API",
+    "endpointPrefix": "",
+    "latency": 0,
+    "port": 5050,
+    "hostname": "",
+    "folders": [],
+    "routes": [
+        {
+            "uuid": "9704d6e8-0f74-4b99-ac51-732cf893087b",
+            "type": "http",
+            "documentation": "Login",
+            "method": "post",
+            "endpoint": "login",
+            "responses": [
+                {
+                    "uuid": "2ae6689b-f6c2-4533-87b8-67bb366958a2",
+                    "body": "{\n  \"username\": \"super_admin\",\n  \"roles\": [\n    \"USER\",\n    \"ADMIN\"\n  ],\n  \"access_token\": \"eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcl9hZG1pbiIsIm5iZiI6MTcwOTcwOTQ4MCwicm9sZXMiOlsiQU5PTllNT1VTIiwiVVNFUiIsIlBBUlRORVIiLCJTQUxFU1BFUlNPTiIsIkxJTUlURURfRElTVFJJQlVUT1IiLCJESVNUUklCVVRPUiIsIkFETUlOIiwiU1VQRVJfQURNSU4iXSwiaXNzIjoic2VydmljZS1yZW50YWwiLCJleHAiOjE3MDk3OTU4ODAsImlhdCI6MTcwOTcwOTQ4MH0.RAPSeSQsgk0cfQZIFcHisSGfRQjDgqJTsIMc9F5ITplr588Wty4_T1DeYVnX0cF52AvW0WkWH_G1aIqawzRn7UNbkDzUlbvDfbDEInszV53v3S4SZQu67DQSIGk131aWKr_5jvQjTiWPpQ-ekWZQd57ysdaeKcnx6nwy1vARtLkaqVkEkqW_p924o3mfeuL4rINGsUvEYw_t1s6lYMW6Jc-H5yBHsfb7smMRFuY1V_DMwDTO4CI7XZ8_PIkqCk9upMGblGm83SScaLd0LeKNuSzUcm8eElN0zh03ukw6QCLU2BqgNZDV0iVcJjwJHiHUmd7itfxUgVYR98k46ekmRZ8GBs3TNhJ_YxzH3G6TVI1hf9rrqCqEWyw29CiJGk3G5t8jhJB5Kmiq2ZXbjHYEjNI3Jw9wkcf3SKILhoffEWALFPCwQh47FnDSG8beL8MqhMAjr8LVCks_a0DsHSIdPaTkS546PsPprugjSCAuUpn-JsvLaJHFfbNEPCOuHTVxqbV6K48s-sZ1fW99iP2hlhoalmj371aGX31suusfWTCigExVU8jjX0ciw1U59_uI1xtpMUfPmdFAVOvI22uIxMg5nfN5ZITYzKokBnyNAeWpiPCgvhpcdz4rs6U-9yOmkgLmud2Io_hL11zL9LSCKBb7R16hbYFYQCvJi5oqKnY\",\n  \"refresh_token\": \"eyJhbGciOiJSUzI1NiJ9.ZmU5NDZhZTgtMjZkZC00YjQ1LTkwNGUtYWE4OWRlMWVhYzU2.soqY2NslnEiLLuOfQ9Ouq-_j1aSTCSkU3B7jkBv33uBsAcSbhipo0DIreQKf7GX7EwBKQ2YWIJgUzvqVh4GJiYpl6hauNkIUaJ-0jViBJswAUNhM1ghl3y-DTsIe8NcW9owVkiFiKr2Mr4Lim01Ichm_773cDjy3j6t8oi_ve4MwYbPLQlw1_jpAHOzI1SvFrAsMlMzPJsTQz9rybqXSOC2_MmJVSktE9_YzdqjBfs_Wtco8gO8s4eJI_k5wYGRWXvlBQEUnuNatmeihknsJBof_ByZxPC1WtcRNUHFC7ZXOjltsxa7vEh9BGryVGgLNMP4lxPYKJ9QImsgsdG7N5mHPpMfkmEzgA_9ApRlu3WNX9Qx85R7YS3QGU3MZH7ffkHCpXa2S4I2Pprcu8lvfz5f07G9TeKZD_Jp7QEiiB3I7FXBwNG3PVjqDRGXH-unkYpwOtLbW4kkck-yIXw97ao7OL8uSroWvkIeKBM4sTTEApmviOgqI8iMlDMdCmraAffbdUVzlMoL4SBEVnH3kMLQ5l27ACQS3Nxx6dtKJKiRhhk7TBQyKK1BKDgRYwjVLsYEWmlVXwXlLC2RJ6KhdoFVp21SdJSrHe3EArjkJB57NpY1lD9vsY3Cq7s5ufet1l1RCOHobCGpfQ_7sh5AY6H6z0B_KyJvu7uFoqKTOR_g\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 86400\n}",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "Login success",
+                    "headers": [],
+                    "bodyType": "INLINE",
+                    "filePath": "",
+                    "databucketID": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true,
+                    "crudKey": "id",
+                    "callbacks": []
+                }
+            ],
+            "responseMode": null
+        },
+        {
+            "uuid": "42bd9f90-9a0d-4228-8c66-e2c0c9918e02",
+            "type": "http",
+            "documentation": "Get access token by refresh token",
+            "method": "post",
+            "endpoint": "access-token",
+            "responses": [
+                {
+                    "uuid": "aa6d953d-aa74-42af-ba14-35c4da07e8fd",
+                    "body": "{\n  \"username\": \"super_admin\",\n  \"roles\": [\n    \"USER\",\n    \"ADMIN\"\n  ],\n  \"access_token\": \"eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcl9hZG1pbiIsIm5iZiI6MTcwOTcwOTQ4MCwicm9sZXMiOlsiQU5PTllNT1VTIiwiVVNFUiIsIlBBUlRORVIiLCJTQUxFU1BFUlNPTiIsIkxJTUlURURfRElTVFJJQlVUT1IiLCJESVNUUklCVVRPUiIsIkFETUlOIiwiU1VQRVJfQURNSU4iXSwiaXNzIjoic2VydmljZS1yZW50YWwiLCJleHAiOjE3MDk3OTU4ODAsImlhdCI6MTcwOTcwOTQ4MH0.RAPSeSQsgk0cfQZIFcHisSGfRQjDgqJTsIMc9F5ITplr588Wty4_T1DeYVnX0cF52AvW0WkWH_G1aIqawzRn7UNbkDzUlbvDfbDEInszV53v3S4SZQu67DQSIGk131aWKr_5jvQjTiWPpQ-ekWZQd57ysdaeKcnx6nwy1vARtLkaqVkEkqW_p924o3mfeuL4rINGsUvEYw_t1s6lYMW6Jc-H5yBHsfb7smMRFuY1V_DMwDTO4CI7XZ8_PIkqCk9upMGblGm83SScaLd0LeKNuSzUcm8eElN0zh03ukw6QCLU2BqgNZDV0iVcJjwJHiHUmd7itfxUgVYR98k46ekmRZ8GBs3TNhJ_YxzH3G6TVI1hf9rrqCqEWyw29CiJGk3G5t8jhJB5Kmiq2ZXbjHYEjNI3Jw9wkcf3SKILhoffEWALFPCwQh47FnDSG8beL8MqhMAjr8LVCks_a0DsHSIdPaTkS546PsPprugjSCAuUpn-JsvLaJHFfbNEPCOuHTVxqbV6K48s-sZ1fW99iP2hlhoalmj371aGX31suusfWTCigExVU8jjX0ciw1U59_uI1xtpMUfPmdFAVOvI22uIxMg5nfN5ZITYzKokBnyNAeWpiPCgvhpcdz4rs6U-9yOmkgLmud2Io_hL11zL9LSCKBb7R16hbYFYQCvJi5oqKnY\",\n  \"refresh_token\": \"eyJhbGciOiJSUzI1NiJ9.ZmU5NDZhZTgtMjZkZC00YjQ1LTkwNGUtYWE4OWRlMWVhYzU2.soqY2NslnEiLLuOfQ9Ouq-_j1aSTCSkU3B7jkBv33uBsAcSbhipo0DIreQKf7GX7EwBKQ2YWIJgUzvqVh4GJiYpl6hauNkIUaJ-0jViBJswAUNhM1ghl3y-DTsIe8NcW9owVkiFiKr2Mr4Lim01Ichm_773cDjy3j6t8oi_ve4MwYbPLQlw1_jpAHOzI1SvFrAsMlMzPJsTQz9rybqXSOC2_MmJVSktE9_YzdqjBfs_Wtco8gO8s4eJI_k5wYGRWXvlBQEUnuNatmeihknsJBof_ByZxPC1WtcRNUHFC7ZXOjltsxa7vEh9BGryVGgLNMP4lxPYKJ9QImsgsdG7N5mHPpMfkmEzgA_9ApRlu3WNX9Qx85R7YS3QGU3MZH7ffkHCpXa2S4I2Pprcu8lvfz5f07G9TeKZD_Jp7QEiiB3I7FXBwNG3PVjqDRGXH-unkYpwOtLbW4kkck-yIXw97ao7OL8uSroWvkIeKBM4sTTEApmviOgqI8iMlDMdCmraAffbdUVzlMoL4SBEVnH3kMLQ5l27ACQS3Nxx6dtKJKiRhhk7TBQyKK1BKDgRYwjVLsYEWmlVXwXlLC2RJ6KhdoFVp21SdJSrHe3EArjkJB57NpY1lD9vsY3Cq7s5ufet1l1RCOHobCGpfQ_7sh5AY6H6z0B_KyJvu7uFoqKTOR_g\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 86400\n}",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "bodyType": "INLINE",
+                    "filePath": "",
+                    "databucketID": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true,
+                    "crudKey": "id",
+                    "callbacks": []
+                }
+            ],
+            "responseMode": null
+        }
+    ],
+    "rootChildren": [
+        {
+            "type": "route",
+            "uuid": "9704d6e8-0f74-4b99-ac51-732cf893087b"
+        },
+        {
+            "type": "route",
+            "uuid": "42bd9f90-9a0d-4228-8c66-e2c0c9918e02"
+        }
+    ],
+    "proxyMode": false,
+    "proxyHost": "",
+    "proxyRemovePrefix": false,
+    "tlsOptions": {
+        "enabled": false,
+        "type": "CERT",
+        "pfxPath": "",
+        "certPath": "",
+        "keyPath": "",
+        "caPath": "",
+        "passphrase": ""
+    },
+    "cors": true,
+    "headers": [
+        {
+            "key": "Content-Type",
+            "value": "application/json"
+        },
+        {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+        },
+        {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+        },
+        {
+            "key": "Access-Control-Allow-Methods",
+            "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+        }
+    ],
+    "proxyReqHeaders": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ],
+    "proxyResHeaders": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ],
+    "data": [],
+    "callbacks": []
+}

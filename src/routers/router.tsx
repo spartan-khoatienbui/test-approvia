@@ -1,9 +1,10 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, defer, Navigate, Outlet } from 'react-router-dom';
 
-import { HOME_ROUTE, LOGIN_ROUTE, NOT_FOUND_ROUTE, USER_ROUTE } from './constants';
+import { HOME_ROUTE, LOGIN_ROUTE, NOT_FOUND_ROUTE, SIGNUP_ROUTE, USER_ROUTE } from './constants';
 
 import {
+  AuthenticatedLayout,
   AuthLayout,
   AuthProvider,
   DashboardLayout,
@@ -48,12 +49,21 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: LOGIN_ROUTE,
-    element: (
-      <AuthProvider>
-        <LoginPage />
-      </AuthProvider>
-    ),
+    element: <AuthenticatedLayout />,
+    children: [
+      {
+        path: LOGIN_ROUTE,
+        element: (
+          <AuthProvider>
+            <LoginPage />
+          </AuthProvider>
+        ),
+      },
+      {
+        path: SIGNUP_ROUTE,
+        element: <></>,
+      },
+    ],
   },
   {
     path: NOT_FOUND_ROUTE,
