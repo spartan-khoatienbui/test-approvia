@@ -149,6 +149,19 @@ To implement this solution in the real world, confidently delete the demo folder
    ![Yarn storybook guide](images/yarn-storybook-ui.png)
    </details>
 
+7. **Running Mock API (Optional):**
+
+   Documentation: 
+   https://mockoon.com/docs/latest/gui-cheat-sheet/
+
+   <details>
+      <summary> <strong>Example screen shots</strong> </summary>
+
+   _This is GUI of Mockoon:_
+
+   ![Yarn mockoon guide](images/yarn-mockoon.png)
+   </details>
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Project Structure

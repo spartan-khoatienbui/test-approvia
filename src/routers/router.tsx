@@ -20,7 +20,6 @@ export default function Router() {
       ),
       children: [{ element: <OverviewPage />, index: true }],
     },
-
     {
       path: '404',
       element: <Page404 />,
