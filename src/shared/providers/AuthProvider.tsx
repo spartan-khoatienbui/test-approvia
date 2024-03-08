@@ -74,7 +74,7 @@ type RequireAuthProps = {
   children: JSX.Element;
 };
 
-export const AccessRestrictedLayout: React.FC<RequireAuthProps> = ({ children }) => {
+export const AccessRestrictedWrapper: React.FC<RequireAuthProps> = ({ children }) => {
   if (!inMemoryJWTService.getToken()) {
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them

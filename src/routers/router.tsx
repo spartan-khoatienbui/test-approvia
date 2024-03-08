@@ -1,11 +1,11 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, defer, Navigate, Outlet } from 'react-router-dom';
 
-import { HOME_ROUTE, LOGIN_ROUTE, NOT_FOUND_ROUTE, SIGNUP_ROUTE, USER_ROUTE } from './constants';
+import { HOME_ROUTE, LOGIN_ROUTE, NOT_FOUND_ROUTE, USER_ROUTE } from './constants';
 
 import {
-  AccessRestrictedLayout,
-  AuthenticationLayout,
+  AccessRestrictedWrapper,
+  AuthenticationWrapper,
   AuthLayout,
   AuthProvider,
   DashboardLayout,
@@ -33,13 +33,13 @@ export const router = createBrowserRouter([
       {
         path: HOME_ROUTE,
         element: (
-          <AccessRestrictedLayout>
+          <AccessRestrictedWrapper>
             <DashboardLayout>
               <Suspense>
                 <Outlet />
               </Suspense>
             </DashboardLayout>
-          </AccessRestrictedLayout>
+          </AccessRestrictedWrapper>
         ),
         children: [
           { element: <OverviewPage />, index: true },
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    element: <AuthenticationLayout />,
+    element: <AuthenticationWrapper />,
     children: [
       {
         path: LOGIN_ROUTE,
@@ -58,10 +58,6 @@ export const router = createBrowserRouter([
             <LoginPage />
           </AuthProvider>
         ),
-      },
-      {
-        path: SIGNUP_ROUTE,
-        element: <></>,
       },
     ],
   },
