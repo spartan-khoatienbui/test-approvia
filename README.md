@@ -6,11 +6,26 @@
 - Supercharge your React development with **proven structures** and **best practices**.
 - **Accelerate your React development**, build scalable, production-ready apps instantly.
 
+### Demo
+
+Go to the demo and see how it works
+
+1. **Navigate to the demo folder**
+
+  ```bash
+   cd demo
+  ```
+
+2. **Follow the guidelines in README**
+
+To implement this solution in the real world, confidently delete the demo folder and move forward.
+
 ### Table of Contents
 
 - [Spartan-React](#spartan-react)
-  - [What are people using it for](#what-are-people-using-it-for)
-  - [Table of Contents](#table-of-contents)
+    - [What are people using it for](#what-are-people-using-it-for)
+    - [Demo](#demo)
+    - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
   - [Key Features](#key-features)
     - [Lint Features](#lint-features)
@@ -107,7 +122,7 @@
 
    <details>
       <summary> <strong>Example screen shots</strong> </summary>
-      
+
       _This will open the development server:_
 
    ![Yarn dev guide](images/yarn-dev-guide.png)
@@ -135,21 +150,6 @@
 
    ![Yarn storybook guide](images/yarn-storybook-ui.png)
    </details>
-
-7. **Running Mock API (Optional):**
-
-   Documentation: 
-   https://mockoon.com/docs/latest/gui-cheat-sheet/
-
-   <details>
-      <summary> <strong>Example screen shots</strong> </summary>
-
-   _This is GUI of Mockoon:_
-
-   ![Yarn mockoon guide](images/yarn-mockoon.png)
-   </details>
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Project Structure
 
@@ -232,4 +232,4 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-<p align="right">(<a href="#spartan-react">back to top</a>)</p>
+<p align="right">(<a href="#spartan-react">Back to top</a>)</p>

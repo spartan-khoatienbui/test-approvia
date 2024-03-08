@@ -6,9 +6,9 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:storybook/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
-  "ignorePatterns": ["dist", ".eslintrc"],
+  "ignorePatterns": ["dist", ".eslintrc", "demo"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["react-refresh", "unused-imports", "simple-import-sort"],
   "rules": {
@@ -18,8 +18,8 @@
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "auto"
-      }
+        "endOfLine": "auto",
+      },
     ],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
@@ -30,9 +30,9 @@
         "vars": "all",
         "varsIgnorePattern": "^_",
         "args": "after-used",
-        "argsIgnorePattern": "^_"
-      }
-    ]
+        "argsIgnorePattern": "^_",
+      },
+    ],
   },
   "overrides": [
     // override "simple-import-sort" config
@@ -54,11 +54,11 @@
               // Other relative imports. Put same-folder imports and `.` last.
               ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
               // Style imports.
-              ["^.+\\.?(css)$"]
-            ]
-          }
-        ]
-      }
-    }
-  ]
+              ["^.+\\.?(css)$"],
+            ],
+          },
+        ],
+      },
+    },
+  ],
 }
