@@ -37,6 +37,24 @@ yarn install
    yarn dev
    ```
 
+## Running storybook:
+
+   ```bash
+   yarn storybook
+   ```
+
+   <details>
+      <summary> <strong>Example screen shots</strong> </summary>
+
+   _This will open the storybook development server:_
+
+   ![Yarn storybook guide](images/yarn-storybook.png)
+
+   _Follow the link to visit storybook ui:_
+
+   ![Yarn storybook guide](images/yarn-storybook-ui.png)
+   </details>
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
