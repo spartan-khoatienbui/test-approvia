@@ -14,15 +14,10 @@ yarn install
 
 ## Run it locally
 
-```bash
-yarn dev
-```
-
-## Running Mock API:
-
    Download https://mockoon.com
 
-   Copy `demo\src\configs\mockroon.json` an import to `mockroon`.
+   Copy content in `demo\src\configs\mockroon.json` file an import to `mockroon`.
+   <br />
    Reference link: <https://mockoon.com/docs/latest/gui-cheat-sheet/>
 
    <details>
@@ -32,8 +27,15 @@ yarn dev
 
    ![Yarn mockoon guide](images/yarn-mockoon.png)
    </details>
+   <br />
 
-
+   Create .env file in root `demo` folder and add:
+   <br />
+   ```VITE_API_ENDPOINT = 'http://localhost:5050'```
+   <br />
+   ```bash
+   yarn dev
+   ```
 
 ## License
 
