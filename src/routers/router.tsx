@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react';
-import { Navigate, Outlet, useRoutes } from 'react-router-dom';
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+
+import { NOT_FOUND_ROUTE } from './constants';
 
 import { DashboardLayout } from '~shared';
 
@@ -8,28 +10,23 @@ export const Page404 = lazy(() => import('~shared/pages/NotFoundPage'));
 
 // ----------------------------------------------------------------------
 
-export default function Router() {
-  const routes = useRoutes([
-    {
-      element: (
-        <DashboardLayout>
-          <Suspense>
-            <Outlet />
-          </Suspense>
-        </DashboardLayout>
-      ),
-      children: [{ element: <OverviewPage />, index: true }],
-    },
-
-    {
-      path: '404',
-      element: <Page404 />,
-    },
-    {
-      path: '*',
-      element: <Navigate to="/404" replace />,
-    },
-  ]);
-
-  return routes;
-}
+export const router = createBrowserRouter([
+  {
+    element: (
+      <DashboardLayout>
+        <Suspense>
+          <Outlet />
+        </Suspense>
+      </DashboardLayout>
+    ),
+    children: [{ element: <OverviewPage />, index: true }],
+  },
+  {
+    path: NOT_FOUND_ROUTE,
+    element: <Page404 />,
+  },
+  {
+    path: '*',
+    element: <Navigate to={NOT_FOUND_ROUTE} replace />,
+  },
+]);
