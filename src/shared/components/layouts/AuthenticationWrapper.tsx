@@ -4,7 +4,7 @@ import { useMount } from 'react-use';
 import { HOME_ROUTE } from '~routers/constants';
 import { inMemoryJWTService } from '~shared/services';
 
-const AuthenticationLayout = () => {
+const AuthenticationWrapper = () => {
   const navigate = useNavigate();
   useMount(() => {
     inMemoryJWTService
@@ -21,4 +21,4 @@ const AuthenticationLayout = () => {
   return <Outlet />;
 };
 
-export default AuthenticationLayout;
+export default AuthenticationWrapper;
