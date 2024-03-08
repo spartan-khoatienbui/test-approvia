@@ -6,10 +6,21 @@
 - Supercharge your React development with **proven structures** and **best practices**.
 - **Accelerate your React development**, build scalable, production-ready apps instantly.
 
+### Demo
+
+Go to the demo and see how it works
+
+1. **Navigate to the demo folder**
+  ```bash
+   cd demo
+  ```
+2. **Follow the guidelines in README**
+
 ### Table of Contents
 
 - [Spartan-React](#spartan-react)
     - [What are people using it for](#what-are-people-using-it-for)
+    - [Demo](#demo)
     - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
   - [Key Features](#key-features)
