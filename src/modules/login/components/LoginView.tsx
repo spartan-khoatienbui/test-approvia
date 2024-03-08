@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import * as yup from 'yup';
 
 import { Iconify, Logo } from '~shared/components';
+import { useAuth } from '~shared/providers';
 import { bgGradient } from '~shared/themes';
 // ----------------------------------------------------------------------
 
@@ -31,7 +32,7 @@ const schema = yup
 
 export const LoginView = () => {
   const theme = useTheme();
-
+  const { signIn } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -47,7 +48,7 @@ export const LoginView = () => {
   });
 
   const onSubmit: SubmitHandler<yup.InferType<typeof schema>> = (data) => {
-    console.log(data);
+    signIn({ email: data.email, password: data.password });
   };
 
   const renderForm = (

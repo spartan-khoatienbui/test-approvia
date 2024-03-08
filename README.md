@@ -9,8 +9,8 @@
 ### Table of Contents
 
 - [Spartan-React](#spartan-react)
-    - [What are people using it for](#what-are-people-using-it-for)
-    - [Table of Contents](#table-of-contents)
+  - [What are people using it for](#what-are-people-using-it-for)
+  - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
   - [Key Features](#key-features)
     - [Lint Features](#lint-features)
@@ -134,6 +134,19 @@
    _Follow the link to visit storybook ui:_
 
    ![Yarn storybook guide](images/yarn-storybook-ui.png)
+   </details>
+
+7. **Running Mock API (Optional):**
+
+   Documentation: 
+   https://mockoon.com/docs/latest/gui-cheat-sheet/
+
+   <details>
+      <summary> <strong>Example screen shots</strong> </summary>
+
+   _This is GUI of Mockoon:_
+
+   ![Yarn mockoon guide](images/yarn-mockoon.png)
    </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
