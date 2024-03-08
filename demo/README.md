@@ -18,10 +18,25 @@ yarn install
 yarn dev
 ```
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+## Running Mock API:
+
+   Download https://mockoon.com
+
+   Copy `demo\src\configs\mockroon.json` an import to `mockroon`.
+   Reference link: <https://mockoon.com/docs/latest/gui-cheat-sheet/>
+
+   <details>
+      <summary> <strong>Example screen shots</strong> </summary>
+
+   _This is GUI of Mockoon:_
+
+   ![Yarn mockoon guide](images/yarn-mockoon.png)
+   </details>
+
+
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-<p align="right">(<a href="#spartan-react">back to top</a>)</p>
+<p align="right">(<a href="#spartan-react">Back to top</a>)</p>
