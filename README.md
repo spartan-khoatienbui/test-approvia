@@ -16,6 +16,8 @@ Go to the demo and see how it works
   ```
 2. **Follow the guidelines in README**
 
+To implement this solution in the real world, confidently delete the demo folder and move forward.
+
 ### Table of Contents
 
 - [Spartan-React](#spartan-react)

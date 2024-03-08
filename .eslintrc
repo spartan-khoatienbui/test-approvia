@@ -8,7 +8,7 @@
     "plugin:storybook/recommended",
     "plugin:prettier/recommended",
   ],
-  "ignorePatterns": ["dist", ".eslintrc", "demo"],
+  "ignorePatterns": ["dist", ".eslintrc"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["react-refresh", "unused-imports", "simple-import-sort"],
   "rules": {
