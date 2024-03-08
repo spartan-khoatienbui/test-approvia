@@ -4,12 +4,12 @@ import { createBrowserRouter, defer, Navigate, Outlet } from 'react-router-dom';
 import { HOME_ROUTE, LOGIN_ROUTE, NOT_FOUND_ROUTE, SIGNUP_ROUTE, USER_ROUTE } from './constants';
 
 import {
-  AuthenticatedLayout,
+  AccessRestrictedLayout,
+  AuthenticationLayout,
   AuthLayout,
   AuthProvider,
   DashboardLayout,
   inMemoryJWTService,
-  RequireAuth,
 } from '~shared';
 
 export const LoginPage = lazy(() => import('~modules/login'));
@@ -33,13 +33,13 @@ export const router = createBrowserRouter([
       {
         path: HOME_ROUTE,
         element: (
-          <RequireAuth>
+          <AccessRestrictedLayout>
             <DashboardLayout>
               <Suspense>
                 <Outlet />
               </Suspense>
             </DashboardLayout>
-          </RequireAuth>
+          </AccessRestrictedLayout>
         ),
         children: [
           { element: <OverviewPage />, index: true },
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    element: <AuthenticatedLayout />,
+    element: <AuthenticationLayout />,
     children: [
       {
         path: LOGIN_ROUTE,
