@@ -41,3 +41,6 @@ dist-ssr
 
 # production
 /build
+
+# terraform
+.terragrunt-cache

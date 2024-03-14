@@ -214,6 +214,31 @@ To implement this solution in the real world, confidently delete the demo folder
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
+## CI/CD Pipelines
+
+1. Create the `Terraform folders` to define the Static website configuration by using [Terragrunt](https://c0x12c.atlassian.net/wiki/spaces/C0X12C/pages/228819036/Core+Terraform+structure+with+Terragrunt)
+```
+terraform
+├── _envcommon
+│   └── static_website.hcl
+├── common.hcl
+├── dev
+│   ├── env.hcl
+│   └── static-website
+│       └── terragrunt.hcl
+├── prod
+│   ├── env.hcl
+│   └── static_website
+│       └── terragrunt.hcl
+└── terragrunt.hcl
+```
+
+2. Create the `Jenkinsfile` to define the CICD steps by following [Jenkins Shared Library](https://github.com/c0x12c/spartan-libs-jenkins)
+   - For the `Pull Requests`, run Terraform and Yarn Test in parallel to save the time.
+   - For the `Deployments`, run Terraform and Yarn Build in sequence, ensure always deploy Terraform before application.
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
