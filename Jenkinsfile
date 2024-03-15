@@ -1,8 +1,11 @@
 @Library('spartan@master') _
 
+String cloudName = "aws"
+String cloudRegion = "us-west-2"
+
 Closure<Void> terraformPipelineConfig = {
-  cloudName = "aws"
-  cloudRegion = "us-west-2"
+  cloudName = cloudName
+  cloudRegion = cloudRegion
 
   nodeBuildLabel = "lightweight"
 
@@ -17,11 +20,11 @@ Closure<Void> terraformPipelineConfig = {
   }
 }
 
-Closure<Void> yarnPipelineConfig {
-  cloudName = "aws"
-  cloudRegion = "us-west-2"
+Closure<Void> yarnPipelineConfig = {
+  cloudName = cloudName
+  cloudRegion = cloudRegion
 
-  nodeBuildLabel = 'nodebuilder'
+  nodeBuildLabel = 'builder'
 
   serviceConfigurations = [
     name              : 'spartan-template-react',
@@ -45,7 +48,7 @@ Closure<Void> yarnPipelineConfig {
 if (env.'BRANCH_NAME' ==~ /^PR-\d+$/) {
   parallel terraformPipeline: {
     terraformPipeline terraformPipelineConfig
-    }, gradlePipeline: {
+    }, yarnPipeline: {
     yarnBuildPipeline yarnPipelineConfig
   },
   failFast: true
