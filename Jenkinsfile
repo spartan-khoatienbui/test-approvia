@@ -1,60 +1,52 @@
 @Library('spartan@master') _
 
-String cloudName = "aws"
-String cloudRegion = "us-west-2"
-
 Closure<Void> terraformPipelineConfig = {
-  cloudName = cloudName
-  cloudRegion = cloudRegion
+  cloudName = "aws"
+  cloudRegion = "us-west-2"
 
   nodeBuildLabel = "lightweight"
 
-  workingDirs = { ctx, buildEnv ->
-    if (buildEnv.isEnabledDevDeployment()) {
-      ['terraform/environments/dev']
-    } else if (buildEnv.isEnabledProdDeployment()) {
-      ['terraform/environments/prod']
-    } else if (buildEnv.isPullRequestBuild()) {
-      ['terraform/environments/dev', 'terraform/environments/prod']
-    }
-  }
+  workingDirs = ['terraform/dev']
+
+  buildEnabled = true
+
+  terraformFmtStageEnabled = true
+  terraformPlanStageEnabled = true
+  terraformValidateStageEnabled = true
+
+  terragruntEnabled = true
 }
 
+
 Closure<Void> yarnPipelineConfig = {
-  cloudName = cloudName
-  cloudRegion = cloudRegion
+  cloudName = "aws"
+  cloudRegion = "us-west-2"
 
   nodeBuildLabel = 'builder'
 
+  extraLibProperties = [
+    JENKINS_NODE_JS_VERSION: "Node 18"
+  ]
+
+  yarnBuildCommands = ["install" , "build"]
+
   serviceConfigurations = [
     name              : 'spartan-template-react',
-    namespace         : 'spartan-template-react',
-    clusterNamePrefix : 'spartan-eks-',
     sourceDir         : 'dist',
     path              : '/*'
   ]
 
-  testStageEnabled = { ctx, buildEnv ->
-    buildEnv.isPullRequestBuild()
-  }
+  buildEnabled = true
 
-  informStageEnabled = { ctx, buildEnv ->
-    buildEnv.isEnabledDevDeployment() || buildEnv.isEnabledProdDeployment()
-  }
+  testStageEnabled = false
+
+  informStageEnabled = false
 
   codeQualityStageEnabled = false
 }
 
-if (env.'BRANCH_NAME' ==~ /^PR-\d+$/) {
-  parallel terraformPipeline: {
-    terraformPipeline terraformPipelineConfig
-    }, yarnPipeline: {
-    yarnBuildPipeline yarnPipelineConfig
-  },
-  failFast: true
-} else {
-  script {
-    terraformPipeline terraformPipelineConfig
-    yarnBuildPipeline yarnPipelineConfig
-  }
+parallel terraformPipeline: {
+  terraformPipeline terraformPipelineConfig
+  }, yarnPipeline: {
+  yarnBuildPipeline yarnPipelineConfig
 }

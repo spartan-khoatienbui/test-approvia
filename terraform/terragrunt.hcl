@@ -1,9 +1,9 @@
 locals {
-  aws_version         = "5.40"
-  aws_region          = "us-west-1"
-  aws_s3_bucket_state = "spartan-terraform-states"
-
   common_vars = read_terragrunt_config(find_in_parent_folders("common.hcl"))
+
+  aws_version         = "5.40"
+  aws_s3_bucket_state = "spartan-terraform-states"
+  aws_region          = local.common_vars.locals.aws_region
 }
 
 # Generate an AWS provider block
@@ -15,7 +15,7 @@ generate "provider" {
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "${local.aws_version}"
     }
   }
