@@ -1,26 +1,8 @@
 @Library('spartan@master') _
 
-Closure<Void> terraformPipelineConfig = {
+yarnBuildPipeline {
   cloudName = "aws"
-  cloudRegion = "us-west-2"
-
-  nodeBuildLabel = "lightweight"
-
-  workingDirs = ['terraform/dev']
-
-  buildEnabled = true
-
-  terraformFmtStageEnabled = true
-  terraformPlanStageEnabled = true
-  terraformValidateStageEnabled = true
-
-  terragruntEnabled = true
-}
-
-
-Closure<Void> yarnPipelineConfig = {
-  cloudName = "aws"
-  cloudRegion = "us-west-2"
+  cloudRegion = "us-west-1"
 
   nodeBuildLabel = 'builder'
 
@@ -36,17 +18,18 @@ Closure<Void> yarnPipelineConfig = {
     path              : '/*'
   ]
 
-  buildEnabled = true
+  deployVarsMode = "ssm"
 
-  testStageEnabled = false
+  buildEnabled = { ctx, buildEnv ->
+      buildEnv.isDefaultBranchBuild() || buildEnv.isPullRequestBuild()
+  }
+
+  devDeploymentEnabled = { ctx, buildEnv ->
+      buildEnv.isDefaultBranchBuild()
+  }
 
   informStageEnabled = false
 
   codeQualityStageEnabled = false
-}
 
-parallel terraformPipeline: {
-  terraformPipeline terraformPipelineConfig
-  }, yarnPipeline: {
-  yarnBuildPipeline yarnPipelineConfig
 }
