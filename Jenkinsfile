@@ -10,8 +10,6 @@ yarnBuildPipeline {
     JENKINS_NODE_JS_VERSION: "Node 18"
   ]
 
-  yarnBuildCommands = ["install" , "build"]
-
   serviceConfigurations = [
     name              : 'spartan-template-react',
     sourceDir         : 'dist',
@@ -31,5 +29,4 @@ yarnBuildPipeline {
   informStageEnabled = false
 
   codeQualityStageEnabled = false
-
 }
