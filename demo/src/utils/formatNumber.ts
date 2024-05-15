@@ -13,7 +13,7 @@ export function fCurrency(number: number | string) {
 }
 
 export function fPercent(number: number | string) {
-  const format = number ? numeral(Number(number) / 100).format('0.0%') : '';
+  const format = number != null ? numeral(Number(number) / 100).format('0.0%') : '';
 
   return result(format, '.0');
 }
