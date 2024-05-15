@@ -9,4 +9,5 @@ export default {
     '^.+\\.tsx?$': 'ts-jest',
   },
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
+  modulePathIgnorePatterns: ['demo'],
 };
