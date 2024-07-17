@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { ButtonBaseProps } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -31,7 +31,7 @@ const MENU_OPTIONS = [
 
 // ----------------------------------------------------------------------
 
-const AccountPopover: React.FC = () => {
+const AccountPopover: FC = () => {
   const { signOut } = useAuth();
   const [open, setOpen] = useState<(EventTarget & HTMLButtonElement) | null>(null);
 

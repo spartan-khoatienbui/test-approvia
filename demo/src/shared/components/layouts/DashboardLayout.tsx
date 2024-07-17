@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import Box from '@mui/material/Box';
 
 import { Header, Main, Nav } from '../molecules';
@@ -9,7 +9,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const DashboardLayout: React.FC<Props> = ({ children }) => {
+const DashboardLayout: FC<Props> = ({ children }) => {
   const [openNav, setOpenNav] = useState(false);
 
   return (

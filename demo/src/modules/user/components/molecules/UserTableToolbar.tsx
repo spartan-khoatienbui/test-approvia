@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
@@ -15,7 +16,7 @@ type Props = {
   onFilterName: OutlinedInputProps['onChange'];
 };
 
-const UserTableToolbar: React.FC<Props> = ({ numSelected, filterName, onFilterName }) => {
+const UserTableToolbar: FC<Props> = ({ numSelected, filterName, onFilterName }) => {
   return (
     <Toolbar
       sx={{

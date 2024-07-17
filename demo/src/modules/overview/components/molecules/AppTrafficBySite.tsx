@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Card, { CardProps } from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -19,7 +20,7 @@ type Props = {
   list: Site[];
 } & CardProps;
 
-const AppTrafficBySite: React.FC<Props> = ({ title, subheader, list, ...other }) => {
+const AppTrafficBySite: FC<Props> = ({ title, subheader, list, ...other }) => {
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />

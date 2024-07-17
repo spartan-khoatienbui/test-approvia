@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Card, { CardProps } from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import { styled, useTheme } from '@mui/material/styles';
@@ -32,7 +33,7 @@ type Props = {
   chart: Omit<ApexOptions, 'series'> & { series: { value: number; label: string }[] };
 } & CardProps;
 
-const AppCurrentVisits: React.FC<Props> = ({ title, subheader, chart, ...other }) => {
+const AppCurrentVisits: FC<Props> = ({ title, subheader, chart, ...other }) => {
   const theme = useTheme();
 
   const { colors, series } = chart;

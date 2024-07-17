@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 
@@ -21,7 +21,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const ThemeProvider: React.FC<Props> = ({ children }) => {
+export const ThemeProvider: FC<Props> = ({ children }) => {
   const memoizedValue = useMemo(
     () => ({
       palette: palette(),

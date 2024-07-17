@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Card, { CardProps } from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
@@ -13,7 +14,7 @@ type Props = {
   icon: React.ReactNode;
 } & CardProps;
 
-const AppWidgetSummary: React.FC<Props> = ({ title, total, icon, sx, ...other }) => {
+const AppWidgetSummary: FC<Props> = ({ title, total, icon, sx, ...other }) => {
   return (
     <Card
       component={Stack}

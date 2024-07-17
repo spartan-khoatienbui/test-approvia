@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { ButtonBaseProps } from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -27,7 +27,7 @@ const LANGS = [
 
 // ----------------------------------------------------------------------
 
-const LanguagePopover: React.FC = () => {
+const LanguagePopover: FC = () => {
   const [open, setOpen] = useState<(EventTarget & HTMLButtonElement) | null>(null);
 
   const handleOpen: ButtonBaseProps['onClick'] = (event) => {

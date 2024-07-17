@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -20,7 +21,7 @@ type Props = {
   onOpenNav: () => void;
 };
 
-const Header: React.FC<Props> = ({ onOpenNav }) => {
+const Header: FC<Props> = ({ onOpenNav }) => {
   const theme = useTheme();
 
   const lgUp = useResponsiveUp('lg');

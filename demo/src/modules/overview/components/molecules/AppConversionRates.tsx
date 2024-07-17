@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Card, { CardProps } from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -14,7 +15,7 @@ type Props = {
   subheader: string;
 } & CardProps;
 
-const AppConversionRates: React.FC<Props> = ({ title, subheader, chart, ...other }) => {
+const AppConversionRates: FC<Props> = ({ title, subheader, chart, ...other }) => {
   const { colors, series } = chart;
 
   const chartSeries = (series || []).map((i) => i.value);

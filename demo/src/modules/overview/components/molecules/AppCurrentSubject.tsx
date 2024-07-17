@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Card, { CardProps } from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import { styled, useTheme } from '@mui/material/styles';
@@ -34,7 +35,7 @@ type Props = {
   subheader?: string;
 } & CardProps;
 
-const AppCurrentSubject: React.FC<Props> = ({ title, subheader, chart, ...other }) => {
+const AppCurrentSubject: FC<Props> = ({ title, subheader, chart, ...other }) => {
   const theme = useTheme();
 
   const { series, colors, categories } = chart;

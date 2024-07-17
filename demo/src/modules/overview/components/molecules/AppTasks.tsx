@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { ButtonBaseProps } from '@mui/material';
 import Card, { CardProps } from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -22,7 +22,7 @@ type Props = {
   list: Task[];
 } & CardProps;
 
-const AppTasks: React.FC<Props> = ({ title, subheader, list, ...other }) => {
+const AppTasks: FC<Props> = ({ title, subheader, list, ...other }) => {
   const [selected, setSelected] = useState(['2']);
 
   const handleClickComplete = (taskId: string) => {
@@ -59,7 +59,7 @@ type TaskItemProps = {
   onChange: () => void;
 };
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, checked, onChange }) => {
+const TaskItem: FC<TaskItemProps> = ({ task, checked, onChange }) => {
   const [open, setOpen] = useState<(EventTarget & HTMLButtonElement) | null>(null);
 
   const handleOpenMenu: ButtonBaseProps['onClick'] = (event) => {

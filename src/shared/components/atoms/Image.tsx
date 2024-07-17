@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Box, SxProps } from '@mui/material';
 
 // ----------------------------------------------------------------------
@@ -8,7 +9,7 @@ type Props = {
   alt?: string;
 };
 
-const Image: React.FC<Props> = ({ src, sx, alt = 'placeholder' }) => {
+const Image: FC<Props> = ({ src, sx, alt = 'placeholder' }) => {
   return (
     <Box
       component="img"

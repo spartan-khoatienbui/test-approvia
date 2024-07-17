@@ -1,12 +1,14 @@
-import { forwardRef, Ref } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, forwardRef } from 'react';
+import { Link, LinkProps } from 'react-router-dom';
 
-// ----------------------------------------------------------------------
-
-type Props = {
+interface Props extends Omit<LinkProps, 'to'> {
   href: string;
-};
+}
 
-export const RouterLink: React.FC<Props> = forwardRef(({ href, ...other }, ref) => (
-  <Link ref={ref as Ref<HTMLAnchorElement> | undefined} to={href} {...other} />
+const RouterLink: FC<Props> = forwardRef<HTMLAnchorElement, Props>(({ href, ...other }, ref) => (
+  <Link ref={ref} to={href} {...other} />
 ));
+
+RouterLink.displayName = 'RouterLink';
+
+export default RouterLink;

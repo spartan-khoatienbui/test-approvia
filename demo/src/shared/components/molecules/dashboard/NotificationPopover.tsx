@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { faker } from '@faker-js/faker';
 import { ButtonBaseProps } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
@@ -190,7 +190,7 @@ type NotificationItemProps = {
   notification: TNotification;
 };
 
-const NotificationItem: React.FC<NotificationItemProps> = ({ notification }) => {
+const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
   const { avatar, title } = renderContent(notification);
 
   return (

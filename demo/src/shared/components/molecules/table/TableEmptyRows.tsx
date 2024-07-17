@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
@@ -8,7 +9,7 @@ type Props = {
   height: number;
 };
 
-const TableEmptyRows: React.FC<Props> = ({ emptyRows, height }) => {
+const TableEmptyRows: FC<Props> = ({ emptyRows, height }) => {
   if (!emptyRows) {
     return null;
   }

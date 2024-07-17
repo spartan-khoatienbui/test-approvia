@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Timeline from '@mui/lab/Timeline';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
@@ -25,7 +26,7 @@ type Props = {
   list: TOrderItem[];
 } & CardProps;
 
-const AppOrderTimeline: React.FC<Props> = ({ title, subheader, list, ...other }) => {
+const AppOrderTimeline: FC<Props> = ({ title, subheader, list, ...other }) => {
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
@@ -57,7 +58,7 @@ type OrderItemProps = {
   lastTimeline: boolean;
 };
 
-const OrderItem: React.FC<OrderItemProps> = ({ item, lastTimeline }) => {
+const OrderItem: FC<OrderItemProps> = ({ item, lastTimeline }) => {
   const { type, title, time } = item;
   return (
     <TimelineItem>
