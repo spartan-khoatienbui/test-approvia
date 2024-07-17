@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -20,7 +20,7 @@ type Props = {
   onCloseNav: () => void;
 };
 
-const Nav: React.FC<Props> = ({ openNav, onCloseNav }) => {
+const Nav: FC<Props> = ({ openNav, onCloseNav }) => {
   const pathname = usePathname();
 
   const upLg = useResponsiveUp('lg');
@@ -128,7 +128,7 @@ type NavItemProps = {
   item: TNavConfig;
 };
 
-const NavItem: React.FC<NavItemProps> = ({ item }) => {
+const NavItem: FC<NavItemProps> = ({ item }) => {
   const pathname = usePathname();
 
   const active = item.path === pathname;

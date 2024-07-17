@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Paper from '@mui/material/Paper';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -9,7 +10,7 @@ type Props = {
   query?: string;
 };
 
-const TableNoData: React.FC<Props> = ({ query = '' }) => {
+const TableNoData: FC<Props> = ({ query = '' }) => {
   return (
     <TableRow>
       <TableCell align="center" colSpan={6} sx={{ py: 3 }}>

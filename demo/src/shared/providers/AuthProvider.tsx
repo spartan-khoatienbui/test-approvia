@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { createContext, useContext } from 'use-context-selector';
@@ -19,7 +19,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const AuthProvider: React.FC<Props> = ({ children }) => {
+export const AuthProvider: FC<Props> = ({ children }) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -74,7 +74,7 @@ type RequireAuthProps = {
   children: JSX.Element;
 };
 
-export const AccessRestrictedWrapper: React.FC<RequireAuthProps> = ({ children }) => {
+export const AccessRestrictedWrapper: FC<RequireAuthProps> = ({ children }) => {
   if (!inMemoryJWTService.getToken()) {
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them

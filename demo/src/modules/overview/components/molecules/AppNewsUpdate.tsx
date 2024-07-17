@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card, { CardProps } from '@mui/material/Card';
@@ -19,7 +20,7 @@ type Props = {
   list: News[];
 } & CardProps;
 
-const AppNewsUpdate: React.FC<Props> = ({ title, subheader, list, ...other }) => {
+const AppNewsUpdate: FC<Props> = ({ title, subheader, list, ...other }) => {
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />

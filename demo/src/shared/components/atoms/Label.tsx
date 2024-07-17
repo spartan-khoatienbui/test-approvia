@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { FC, forwardRef } from 'react';
 import Box, { BoxProps } from '@mui/material/Box';
 import { SxProps, useTheme } from '@mui/material/styles';
 import { alpha, styled } from '@mui/material/styles';
@@ -94,7 +94,7 @@ type Props = {
   sx?: SxProps;
 };
 
-const Label: React.FC<Props> = forwardRef(
+const Label: FC<Props> = forwardRef<HTMLDivElement, Props>(
   (
     {
       children,
@@ -137,5 +137,7 @@ const Label: React.FC<Props> = forwardRef(
     );
   }
 );
+
+Label.displayName = 'Label';
 
 export default Label;

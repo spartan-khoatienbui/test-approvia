@@ -1,6 +1,6 @@
-import { forwardRef } from 'react';
+import { FC, forwardRef } from 'react';
 import { SxProps } from '@mui/material';
-import Box from '@mui/material/Box';
+import Box, { BoxProps } from '@mui/material/Box';
 
 // ----------------------------------------------------------------------
 
@@ -9,7 +9,7 @@ type Props = {
   src: string;
 };
 
-const SvgColor: React.FC<Props> = forwardRef(({ src, sx, ...other }, ref) => (
+const SvgColor: FC<Props> = forwardRef<BoxProps, Props>(({ src, sx, ...other }, ref) => (
   <Box
     component="span"
     className="svg-color"
@@ -26,5 +26,7 @@ const SvgColor: React.FC<Props> = forwardRef(({ src, sx, ...other }, ref) => (
     {...other}
   />
 ));
+
+SvgColor.displayName = 'SvgColor';
 
 export default SvgColor;

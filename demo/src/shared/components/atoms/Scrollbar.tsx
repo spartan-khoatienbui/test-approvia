@@ -1,4 +1,4 @@
-import { forwardRef, memo } from 'react';
+import { FC, forwardRef, memo } from 'react';
 import Box from '@mui/material/Box';
 import { alpha, styled, SxProps } from '@mui/material/styles';
 import SimpleBar from 'simplebar-react';
@@ -33,33 +33,37 @@ type Props = {
   sx?: SxProps;
 };
 
-const Scrollbar: React.FC<Props> = forwardRef(({ children, sx, ...other }, ref) => {
-  const userAgent = typeof navigator === 'undefined' ? 'SSR' : navigator.userAgent;
+const Scrollbar: FC<Props> = forwardRef<HTMLDivElement, Props>(
+  ({ children, sx, ...other }, ref) => {
+    const userAgent = typeof navigator === 'undefined' ? 'SSR' : navigator.userAgent;
 
-  const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+    const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 
-  if (mobile) {
+    if (mobile) {
+      return (
+        <Box ref={ref} sx={{ overflow: 'auto', ...sx }} {...other}>
+          {children}
+        </Box>
+      );
+    }
+
     return (
-      <Box ref={ref} sx={{ overflow: 'auto', ...sx }} {...other}>
-        {children}
-      </Box>
+      <StyledRootScrollbar>
+        <StyledScrollbar
+          scrollableNodeProps={{
+            ref,
+          }}
+          clickOnTrack={false}
+          sx={sx}
+          {...other}
+        >
+          {children}
+        </StyledScrollbar>
+      </StyledRootScrollbar>
     );
   }
+);
 
-  return (
-    <StyledRootScrollbar>
-      <StyledScrollbar
-        scrollableNodeProps={{
-          ref,
-        }}
-        clickOnTrack={false}
-        sx={sx}
-        {...other}
-      >
-        {children}
-      </StyledScrollbar>
-    </StyledRootScrollbar>
-  );
-});
+Scrollbar.displayName = 'Scrollbar';
 
 export default memo(Scrollbar);

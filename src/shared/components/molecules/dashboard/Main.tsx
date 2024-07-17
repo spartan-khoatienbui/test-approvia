@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { SxProps } from '@mui/material';
 import Box from '@mui/material/Box';
 
@@ -13,7 +14,7 @@ type Props = {
   sx?: SxProps;
 };
 
-const Main: React.FC<Props> = ({ children, sx, ...other }) => {
+const Main: FC<Props> = ({ children, sx, ...other }) => {
   const lgUp = useResponsiveUp('lg');
 
   return (
