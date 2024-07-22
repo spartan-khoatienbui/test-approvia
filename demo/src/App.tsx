@@ -4,7 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { router } from '~routers';
-import { ThemeProvider } from '~shared';
+import { ThemeProvider, ToastProvider } from '~shared';
 
 const queryClient = new QueryClient();
 
@@ -13,9 +13,11 @@ function App() {
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
-          <Suspense>
-            <RouterProvider router={router} />
-          </Suspense>
+          <ToastProvider>
+            <Suspense>
+              <RouterProvider router={router} />
+            </Suspense>
+          </ToastProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </HelmetProvider>

@@ -18,6 +18,7 @@ import * as yup from 'yup';
 import { Iconify, Logo } from '~shared/components';
 import { useAuth } from '~shared/providers';
 import { bgGradient } from '~shared/themes';
+import { toast } from '~utils';
 // ----------------------------------------------------------------------
 
 const schema = yup
@@ -143,7 +144,11 @@ export const LoginView = () => {
 
           <Typography variant="body2" sx={{ mt: 2, mb: 5 }}>
             Don’t have an account?
-            <Link variant="subtitle2" sx={{ ml: 0.5 }}>
+            <Link
+              variant="subtitle2"
+              sx={{ ml: 0.5 }}
+              onClick={() => toast.success('Welcome to minimal')}
+            >
               Get started
             </Link>
           </Typography>
