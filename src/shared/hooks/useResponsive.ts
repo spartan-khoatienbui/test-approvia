@@ -1,26 +1,28 @@
-import { Breakpoint, useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { useEffect, useState } from "react";
 
-export function useResponsiveUp(start: number | Breakpoint) {
-  const theme = useTheme();
+const BREAKPOINT = {
+  Mobile: 768,
+  Tablet: 1024,
+};
 
-  return useMediaQuery(theme.breakpoints.up(start));
-}
+export function useResponsive() {
+  const [width, setWidth] = useState(window.innerWidth);
 
-export function useResponsiveDown(start: number | Breakpoint) {
-  const theme = useTheme();
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  };
 
-  return useMediaQuery(theme.breakpoints.down(start));
-}
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
 
-export function useResponsiveBetween(start: number | Breakpoint, end: number | Breakpoint) {
-  const theme = useTheme();
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
 
-  return useMediaQuery(theme.breakpoints.between(start, end));
-}
+  const isMobile = width <= BREAKPOINT.Mobile;
+  const isTablet = BREAKPOINT.Mobile < width && width <= BREAKPOINT.Tablet;
+  const isDesktop = BREAKPOINT.Tablet < width;
 
-export function useResponsiveOnly(start: Breakpoint) {
-  const theme = useTheme();
-
-  return useMediaQuery(theme.breakpoints.only(start));
+  return { isMobile, isTablet, isDesktop };
 }

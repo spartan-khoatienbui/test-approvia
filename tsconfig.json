@@ -9,19 +9,28 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
     "isolatedModules": true,
+    "moduleDetection": "force",
     "noEmit": true,
-    "esModuleInterop": true,
     "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": "./",
+    "paths": {
+      "@icons": ["./src/assets/icons"],
+      "@router": ["./src/router"],
+      "@shared/*": ["./src/shared/*"],
+      "@config/*": ["./src/configs/*"],
+      "@api/*": ["./src/api/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@/*": ["./src/modules/*"]
+    },
+    "types": ["vitest/globals"]
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "extends": "./tsconfig.paths.json",
+  "include": ["src", "packages", "@types", "vite.config.ts", ".storybook"]
 }

@@ -22,25 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# local env files
 .env
-.env*.local
+*storybook.log
 
-# yarn
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-.idea
+# Only allow yarn.lock file
+package-lock.json
+pnpm-lock.yaml
 
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# terraform
-.terragrunt-cache
+.vscode/
