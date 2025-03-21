@@ -1,0 +1,3 @@
+{
+  "POST /api/auth/refresh-token": "REFRESH_AUTH_TOKEN"
+}

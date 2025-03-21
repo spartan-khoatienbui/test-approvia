@@ -1,0 +1,28 @@
+import { useEffect, useState } from "react";
+
+const BREAKPOINT = {
+  Mobile: 768,
+  Tablet: 1024,
+};
+
+export function useResponsive() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= BREAKPOINT.Mobile;
+  const isTablet = BREAKPOINT.Mobile < width && width <= BREAKPOINT.Tablet;
+  const isDesktop = BREAKPOINT.Tablet < width;
+
+  return { isMobile, isTablet, isDesktop };
+}

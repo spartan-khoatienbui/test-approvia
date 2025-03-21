@@ -1,0 +1,79 @@
+@import "tailwindcss" important;
+
+@theme {
+  /* Colors  */
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --color-primary: #2344c3;
+  --color-secondary: #757575;
+  --color-typo: #1e1e1e;
+  --color-tertiary: #b3b3b3;
+  --color-error: #c00f0c;
+  --color-warn: #e38c00;
+  --color-success: #02542d;
+
+  --color-gray-1: #d9d9d9;
+  --color-gray-2: #5a5a5a;
+  --color-gray-3: #2c2c2c;
+  --color-gray-4: #f5f5f5;
+  --color-gray-5: #f0f0f0;
+  --color-gray-6: #757575;
+  --color-gray-7: #475467;
+  --color-gray-8: #eaecf0;
+  --color-gray-9: #344054;
+  --color-gray-10: #b3b3b3;
+  --color-gray-11: #fbfbfb;
+
+  --color-blue-1: #edf0fe;
+  --color-blue-2: #4c6ef6;
+  --color-blue-3: #2344c3;
+
+  --color-green-1: #ebffee;
+  --color-green-2: #02542d;
+
+  --color-orange-1: #fff1c2;
+  --color-orange-2: #bf6a02;
+
+  --color-violet-1: #fbe3ff;
+  --color-violet-2: #ab47bc;
+
+  --color-red-1: #c00f0c;
+  --color-red-tertiary: #fee9e7;
+
+  --color-yellow-1: #fff5cf;
+  --color-yellow-2: #ac6a00;
+
+  --color-black-1: #374151;
+
+  --color-border: #d9d9d9;
+
+  --color-neutral-secondary: #cdcdcd;
+  --color-neutral-tertiary: #e3e3e3;
+  /* Fonts */
+  --font-serif: "Urbanist", serif;
+}
+
+@layer components {
+  .c0x12c-btn-icon {
+    @apply flex;
+  }
+
+  .c0x12c-dashboard {
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.07);
+    @apply bg-white;
+    @apply rounded-2xl;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
