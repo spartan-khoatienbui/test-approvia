@@ -2,7 +2,7 @@ import { SignOut, UserCircle } from "@phosphor-icons/react";
 import { useNavigate } from "@tanstack/react-router";
 import { Avatar, Button, Divider, Layout, Menu, Popover } from "antd";
 
-import { useGetMe } from "~/__generated__/api/hooks/useGetMe";
+import { useGetMe } from "~/__generated__/hooks/useGetMe";
 import { useAuth } from "~/auth/hooks/useAuth";
 import { cn } from "~shared/utils/cn.util";
 
@@ -20,16 +20,10 @@ export function Header() {
             <span className="mb-1 font-semibold">{user?.name}</span>
             <span className="text-gray-2">{user?.email}</span>
 
-            <Divider
-              variant="dashed"
-              className="-mx-3 w-[calc(100%+24px)] my-4"
-            />
+            <Divider variant="dashed" className="-mx-3 w-[calc(100%+24px)] my-4" />
 
             <Menu
-              className={cn(
-                "border-none mb-4",
-                "[&_li]:flex [&_li]:items-center [&_li]:m-0 [&_li]:px-2.5",
-              )}
+              className={cn("border-none mb-4", "[&_li]:flex [&_li]:items-center [&_li]:m-0 [&_li]:px-2.5")}
               items={[
                 {
                   key: "my-profile",
@@ -46,9 +40,7 @@ export function Header() {
               ]}
             />
 
-            <div className="w-max mx-auto text-gray-2 text-xs">
-              Version 1.0.2
-            </div>
+            <div className="w-max mx-auto text-gray-2 text-xs">Version 1.0.2</div>
           </div>
         }
         arrow={false}

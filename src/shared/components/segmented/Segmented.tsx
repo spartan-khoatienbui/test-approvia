@@ -15,20 +15,13 @@ export function Segmented<T extends string | number>({
   className,
   onChange,
 }: SegmentedProps<T>) {
-  const [innerValue, setInnerValue] = useState(
-    isObject(options[0]) ? options[0].value : options[0],
-  );
+  const [innerValue, setInnerValue] = useState(isObject(options[0]) ? options[0].value : options[0]);
   const value = outerValue ?? innerValue;
 
-  const activeIdx = options.findIndex(
-    (opt) => (isObject(opt) ? opt.value : opt) === value,
-  );
+  const activeIdx = options.findIndex((opt) => (isObject(opt) ? opt.value : opt) === value);
 
   return (
-    <ul
-      className={cn("grid relative", className)}
-      style={{ gridTemplateColumns: `repeat(${options?.length}, 1fr)` }}
-    >
+    <ul className={cn("grid relative", className)} style={{ gridTemplateColumns: `repeat(${options?.length}, 1fr)` }}>
       {options?.map((opt) => {
         const optValue = isObject(opt) ? opt.value : opt;
         const optLabel = isObject(opt) ? opt.label : opt;
@@ -37,12 +30,9 @@ export function Segmented<T extends string | number>({
         return (
           <li
             key={optValue}
-            className={cn(
-              "text-center px-4 py-3 font-medium text-gray-6 cursor-pointer transition-all",
-              {
-                "text-typo": isActive,
-              },
-            )}
+            className={cn("text-center px-4 py-3 font-medium text-gray-6 cursor-pointer transition-all", {
+              "text-typo": isActive,
+            })}
             onClick={() => {
               setInnerValue(optValue);
               onChange?.(optValue);

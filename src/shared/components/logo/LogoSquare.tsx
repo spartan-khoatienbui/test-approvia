@@ -6,20 +6,8 @@ type LogoSquareProps = SVGProps<SVGSVGElement> & {
 
 export function LogoSquare({ variant = "black", ...props }: LogoSquareProps) {
   return (
-    <svg
-      width={36}
-      height={36}
-      viewBox="0 0 36 36"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <rect
-        width={36}
-        height={36}
-        rx={6}
-        fill={variant === "white" ? "white" : "black"}
-      />
+    <svg width={36} height={36} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect width={36} height={36} rx={6} fill={variant === "white" ? "white" : "black"} />
       <path
         fillRule="evenodd"
         clipRule="evenodd"

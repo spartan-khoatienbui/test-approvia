@@ -38,10 +38,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export function Table<Record>({
-  pagination = {},
-  ...props
-}: TableProps<Record>) {
+export function Table<Record>({ pagination = {}, ...props }: TableProps<Record>) {
   const [innerPageSize, setInnerPageSize] = useState(10);
 
   return (
@@ -54,11 +51,8 @@ export function Table<Record>({
             className: "border-t border-border",
             showTotal: (total, [start, end]) => {
               const currentSize = end - start + 1;
-              const currentPage =
-                pagination.current || Math.ceil(end / currentSize);
-              const options = [10, 25, 50]
-                .filter((v) => v <= total)
-                .map((value) => ({ value }));
+              const currentPage = pagination.current || Math.ceil(end / currentSize);
+              const options = [10, 25, 50].filter((v) => v <= total).map((value) => ({ value }));
 
               return (
                 <div className="flex items-center gap-1">
@@ -71,10 +65,7 @@ export function Table<Record>({
                     onChange={(size) => {
                       setInnerPageSize?.(size);
                       const maxPages = ceil(total / size);
-                      pagination.onShowSizeChange?.(
-                        clamp(currentPage, 0, maxPages),
-                        size,
-                      );
+                      pagination.onShowSizeChange?.(clamp(currentPage, 0, maxPages), size);
                     }}
                   />
                   <span>from {total}</span>

@@ -23,16 +23,10 @@ const StyledMenu = styled(Menu)`
     color: var(--color-gray-4) !important;
 
     &:hover {
-      background-color: ${alpha(
-        getCSSVariable("--color-gray-2"),
-        0.2,
-      )} !important;
+      background-color: ${alpha(getCSSVariable("--color-gray-2"), 0.2)} !important;
     }
     &.c0x12c-menu-item-selected {
-      background-color: ${alpha(
-        getCSSVariable("--color-primary"),
-        0.3,
-      )} !important;
+      background-color: ${alpha(getCSSVariable("--color-primary"), 0.3)} !important;
     }
 
     .c0x12c-menu-item-icon {
@@ -67,9 +61,7 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const SIDEBAR_ITEMS: Array<SidebarItem> = [
-  { path: "/", icon: MainComponent, label: "Dashboard" },
-];
+const SIDEBAR_ITEMS: Array<SidebarItem> = [{ path: "/", icon: MainComponent, label: "Dashboard" }];
 
 type SidebarProps = {
   collapsed: boolean;
@@ -100,20 +92,8 @@ export function Sidebar({ collapsed, onCollapseButtonClick }: SidebarProps) {
           "gap-0 justify-center": collapsed,
         })}
       >
-        <LogoSquare
-          width={36}
-          height={36}
-          className="shrink-0"
-          variant="white"
-        />
-        <span
-          className={cn(
-            "text-2xl font-semibold transition-all overflow-hidden",
-            { "w-0": collapsed },
-          )}
-        >
-          Atlas
-        </span>
+        <LogoSquare width={36} height={36} className="shrink-0" variant="white" />
+        <span className={cn("text-2xl font-semibold transition-all overflow-hidden", { "w-0": collapsed })}>Atlas</span>
       </Link>
 
       <div className="grow">
@@ -123,26 +103,12 @@ export function Sidebar({ collapsed, onCollapseButtonClick }: SidebarProps) {
           selectedKeys={[currentPath]}
           items={SIDEBAR_ITEMS.map(({ path, icon: Icon, label, children }) => ({
             key: path || label,
-            icon: (
-              <Icon
-                size={iconSize}
-                variant={
-                  path && currentPath.startsWith(path) ? "Bold" : "Linear"
-                }
-              />
-            ),
+            icon: <Icon size={iconSize} variant={path && currentPath.startsWith(path) ? "Bold" : "Linear"} />,
             label,
             onClick: () => path && navigate({ to: path }),
             children: children?.map(({ path, icon: ChildIcon, label }) => ({
               key: path,
-              icon: (
-                <ChildIcon
-                  size={iconSize}
-                  variant={
-                    path && currentPath.startsWith(path) ? "Bold" : "Linear"
-                  }
-                />
-              ),
+              icon: <ChildIcon size={iconSize} variant={path && currentPath.startsWith(path) ? "Bold" : "Linear"} />,
               label,
               onClick: () => path && navigate({ to: path }),
             })),

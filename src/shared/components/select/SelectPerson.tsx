@@ -3,8 +3,8 @@ export {};
 // import { differenceBy, flatMap, uniqBy } from "lodash-es";
 // import { ReactNode } from "react";
 
-// import { listMinimalUsers } from "~/__generated__/api/hooks/useListMinimalUsers.ts";
-// import { genListMinimalUsersKey } from "~/__generated__/api/hooks/useListMinimalUsers.ts";
+// import { listMinimalUsers } from "~/__generated__/hooks/useListMinimalUsers.ts";
+// import { genListMinimalUsersKey } from "~/__generated__/hooks/useListMinimalUsers.ts";
 // import {
 //   SortOrder,
 //   UserFilter,
@@ -12,7 +12,7 @@ export {};
 //   UserMinimalView,
 //   UserSort,
 //   UserStatus,
-// } from "~/__generated__/api/types/swagger";
+// } from "~/__generated__/types/swagger.type";
 // import { useDebounceState } from "~shared/hooks/useDebounceState";
 // import { useInfiniteQuery } from "~shared/hooks/useInfiniteQuery";
 // import { ensureArray } from "~shared/utils/array.util";

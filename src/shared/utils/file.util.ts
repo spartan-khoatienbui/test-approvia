@@ -10,10 +10,7 @@ export function getFileExt(fileName: string) {
   return trailingFileName.slice(lastDotIndex + 1).toLowerCase() || null;
 }
 
-export function isValidFileExt(
-  fileName: string,
-  allowedExts: Array<string> | "*",
-) {
+export function isValidFileExt(fileName: string, allowedExts: Array<string> | "*") {
   const ext = getFileExt(fileName);
 
   if (allowedExts === "*") {

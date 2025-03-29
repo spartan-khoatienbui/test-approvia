@@ -10,8 +10,7 @@ const { Content } = Layout;
 export const Route = createFileRoute("/_private")({
   component: PrivateLayout,
   beforeLoad: async ({ context }) => {
-    if (!(await context.auth.isAuthenticated()))
-      throw redirect({ to: "/sign-in" });
+    if (!(await context.auth.isAuthenticated())) throw redirect({ to: "/sign-in" });
   },
 });
 

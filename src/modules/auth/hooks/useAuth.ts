@@ -1,11 +1,7 @@
 import { useAtom } from "jotai";
 
-import { useGetMe } from "~/__generated__/api/hooks/useGetMe";
-import {
-  getAuthRedirectUrl,
-  loginWithProvider,
-  logout,
-} from "~/auth/services/auth.service";
+import { useGetMe } from "~/__generated__/hooks/useGetMe";
+import { getAuthRedirectUrl, loginWithProvider, logout } from "~/auth/services/auth.service";
 import { authAtom } from "~/auth/stores/auth.store";
 import { AuthProvider } from "~/auth/types/auth.type";
 import { useNotification } from "~shared/hooks/useNotification";
@@ -34,11 +30,7 @@ export function useAuth() {
     window.location.href = url;
   };
 
-  const signIn = async (
-    info:
-      | { provider: AuthProvider; code: string }
-      | { email: string; password: string },
-  ) => {
+  const signIn = async (info: { provider: AuthProvider; code: string } | { email: string; password: string }) => {
     if ("provider" in info) {
       const { provider, code } = info;
       await loginWithProvider(provider, code).catch(showError);

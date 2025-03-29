@@ -1,10 +1,6 @@
 import { REFRESH_TOKEN_KEY } from "~/auth/constants/auth.constant";
 import { jwtStorage } from "~/auth/services/jwt-storage.service";
-import {
-  AuthProvider,
-  LoginResponse,
-  RefreshTokenResponse,
-} from "~/auth/types/auth.type";
+import { AuthProvider, LoginResponse, RefreshTokenResponse } from "~/auth/types/auth.type";
 import { baseClient } from "~shared/utils/api-client.util";
 
 export async function getAuthRedirectUrl(provider: AuthProvider) {

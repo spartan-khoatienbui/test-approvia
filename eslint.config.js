@@ -8,7 +8,7 @@ import react from "eslint-plugin-react";
 import prettier from "eslint-config-prettier/flat";
 
 export default tslint.config(
-  { ignores: ["dist", "src/router.ts", ".storybook"] },
+  { ignores: ["dist", ".storybook"] },
   {
     extends: [
       jslint.configs.recommended,
@@ -30,23 +30,12 @@ export default tslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "perfectionist/sort-imports": [
         "error",
         {
           type: "alphabetical",
-          internalPattern: [
-            "~/.*",
-            "~icons",
-            "~router",
-            "~shared/.*",
-            "~config/.*",
-            "~api/.*",
-            "~styles/.*",
-          ],
+          internalPattern: ["~/.*", "~icons", "~router", "~shared/.*", "~config/.*", "~api/.*", "~styles/.*"],
           groups: [
             "type",
             ["builtin", "external"],
@@ -71,20 +60,12 @@ export default tslint.config(
             },
             {
               group: ["react-router-dom"],
-              importNames: [
-                "Navigate",
-                "Link",
-                "redirect",
-                "useParams",
-                "useNavigate",
-              ],
-              message:
-                "Please import from '@/router' instead of 'react-router-dom'.",
+              importNames: ["Navigate", "Link", "redirect", "useParams", "useNavigate"],
+              message: "Please import from '@/router' instead of 'react-router-dom'.",
             },
             {
               group: ["clsx", "tailwind-merge"],
-              message:
-                "Please import 'cn' from '@shared/utils/cn.util' instead.",
+              message: "Please import 'cn' from '@shared/utils/cn.util' instead.",
             },
           ],
         },
@@ -102,10 +83,7 @@ export default tslint.config(
         },
       ],
       "@typescript-eslint/no-unused-expressions": "off",
-      "react/function-component-definition": [
-        "error",
-        { namedComponents: "function-declaration" },
-      ],
+      "react/function-component-definition": ["error", { namedComponents: "function-declaration" }],
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
       "prefer-template": "error",
@@ -113,9 +91,7 @@ export default tslint.config(
       "@typescript-eslint/array-type": ["error", { default: "generic" }],
     },
     settings: {
-      react: {
-        version: "detect",
-      },
+      react: { version: "detect" },
     },
   },
 );

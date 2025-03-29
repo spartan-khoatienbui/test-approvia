@@ -1,6 +1,6 @@
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 
-import { UserResponse } from "~/__generated__/api/types/swagger";
+import { UserResponse } from "~/__generated__/types/swagger.type";
 import { AuthStore } from "~/auth/types/auth.type";
 
 const user = atom<UserResponse>();

@@ -19,9 +19,7 @@ export function NotFound() {
 
         <h1 className="text-5xl font-semibold mb-6">Page not found</h1>
         <div className="text-xl">Requested action could not be completed.</div>
-        <div className="text-xl">
-          Please contact your organization&apos;s administrator for assistance.
-        </div>
+        <div className="text-xl">Please contact your organization&apos;s administrator for assistance.</div>
       </div>
     </div>
   );

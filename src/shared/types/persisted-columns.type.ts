@@ -8,6 +8,4 @@ export type TableColumnPersisted = { key: string; visible: boolean };
 
 export type TableColumns<T = unknown> = Array<TableColumn<T>>;
 export type TableColumnsPersisted = Array<TableColumnPersisted>;
-export type TableColumnCombined<T> = Array<
-  TableColumn<T> & TableColumnPersisted & { adjustable?: boolean }
->;
+export type TableColumnCombined<T> = Array<TableColumn<T> & TableColumnPersisted & { adjustable?: boolean }>;

@@ -1,4 +1,4 @@
-import { UserResponse } from "~/__generated__/api/types/swagger";
+import { UserResponse } from "~/__generated__/types/swagger.type";
 import { AUTH_PROVIDER, USER_ROLE } from "~/auth/constants/auth.constant";
 import { Maybe } from "~shared/types/base.type";
 

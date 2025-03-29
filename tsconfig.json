@@ -29,16 +29,10 @@
       "~api/*": ["./src/api/*"],
       "~styles/*": ["./src/styles/*"],
       "~plugins/*": ["./plugins/*"],
+      "~scripts/*": ["./scripts/*"],
       "~/*": ["./src/modules/*", "./src/*"]
     },
     "types": ["vitest/globals"]
   },
-  "include": [
-    "src",
-    "packages",
-    "@types",
-    "plugins",
-    "vite.config.ts",
-    ".storybook"
-  ]
+  "include": ["src", "packages", "scripts", "@types", "plugins", "vite.config.ts", ".storybook"]
 }

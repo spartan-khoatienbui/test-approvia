@@ -17,19 +17,13 @@ function SignInPage() {
       <div className="max-w-280 flex items-center flex-col justify-center p-6">
         <LogoFilled className="size-25 mb-6" />
 
-        <h1 className="font-semibold text-3xl md:text-5xl mb-6 text-center">
-          Sign in to get started
-        </h1>
+        <h1 className="font-semibold text-3xl md:text-5xl mb-6 text-center">Sign in to get started</h1>
 
         <div className="mb-10 text-xl md:text-2xl text-center">
           Connect with Google for a seamless, personalized experience.
         </div>
 
-        <Button
-          className="w-63.5 gap-3.5"
-          size="large"
-          onClick={() => redirectWithProvider("google")}
-        >
+        <Button className="w-63.5 gap-3.5" size="large" onClick={() => redirectWithProvider("google")}>
           <IconGoogle className="size-5" />
           Continue with Google
         </Button>

@@ -1,27 +1,13 @@
-import {
-  AxiosError,
-  AxiosInstance,
-  AxiosResponse,
-  InternalAxiosRequestConfig,
-} from "axios";
+import { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
-import {
-  ERROR_NO_ACCESS_TOKEN_FOUND,
-  REFRESH_TOKEN_ENDPOINT,
-} from "~/auth/constants/auth.constant";
-import {
-  handleSessionExpired,
-  refreshToken,
-} from "~/auth/services/auth.service";
+import { ERROR_NO_ACCESS_TOKEN_FOUND, REFRESH_TOKEN_ENDPOINT } from "~/auth/constants/auth.constant";
+import { handleSessionExpired, refreshToken } from "~/auth/services/auth.service";
 import { jwtStorage } from "~/auth/services/jwt-storage.service";
 import { AuthClientState } from "~/auth/types/auth.type";
 import { createBaseClient } from "~shared/utils/api-client.util";
 
 // --------- REQUESTS INTERCEPTORS ---------
-async function ensureRefreshTokenCompleted(
-  _config: InternalAxiosRequestConfig,
-  state: AuthClientState,
-) {
+async function ensureRefreshTokenCompleted(_config: InternalAxiosRequestConfig, state: AuthClientState) {
   const accessToken = jwtStorage.get();
   if (!accessToken) {
     state.refreshToken ??= refreshToken();
@@ -30,10 +16,7 @@ async function ensureRefreshTokenCompleted(
   state.refreshToken = null;
 }
 
-async function attachAccessToken(
-  config: InternalAxiosRequestConfig,
-  _state: AuthClientState,
-) {
+async function attachAccessToken(config: InternalAxiosRequestConfig, _state: AuthClientState) {
   const accessToken = jwtStorage.get();
 
   if (!accessToken) {
@@ -45,13 +28,8 @@ async function attachAccessToken(
 }
 
 // --------- RESPONSE INTERCEPTORS ---------
-function handleError401(
-  error: AxiosError | AxiosResponse,
-  client: AxiosInstance,
-  state: AuthClientState,
-) {
-  const originalRequest: InternalAxiosRequestConfig & { _hasRetry?: boolean } =
-    error.config!;
+function handleError401(error: AxiosError | AxiosResponse, client: AxiosInstance, state: AuthClientState) {
+  const originalRequest: InternalAxiosRequestConfig & { _hasRetry?: boolean } = error.config!;
 
   if (originalRequest.url === REFRESH_TOKEN_ENDPOINT) {
     return handleSessionExpired();
@@ -75,9 +53,7 @@ function createAuthClient() {
   client.interceptors.request.use(
     async (config) => {
       await ensureRefreshTokenCompleted(config, state);
-      await attachAccessToken(config, state).catch((error) =>
-        Promise.reject(error),
-      );
+      await attachAccessToken(config, state).catch((error) => Promise.reject(error));
 
       return config;
     },

@@ -49,11 +49,7 @@ export function WebApp() {
 
   return (
     <>
-      <RouterProvider
-        router={router}
-        context={{ auth, notification }}
-        defaultPendingComponent={Pending}
-      />
+      <RouterProvider router={router} context={{ auth, notification }} defaultPendingComponent={Pending} />
       <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-left" />
     </>
   );

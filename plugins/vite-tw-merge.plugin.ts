@@ -5,10 +5,7 @@ import { Plugin } from "vite";
 
 const PLUGIN_NAME = "vite-tw-merge";
 const FILE_PATH = path.resolve(process.cwd(), "src/styles/global.css");
-const CONFIG_PATH = path.resolve(
-  process.cwd(),
-  "src/configs/tailwind-variables.config.ts",
-);
+const CONFIG_PATH = path.resolve(process.cwd(), "src/configs/tailwind-variables.config.ts");
 
 export default function twMerge(): Plugin {
   return {

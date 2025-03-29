@@ -6,20 +6,13 @@ export enum DateFormat {
   DateOnly = "MMM DD, YYYY",
 }
 
-export function formatDate(
-  date: ConfigType,
-  format: DateFormat,
-  fallback = "",
-) {
+export function formatDate(date: ConfigType, format: DateFormat, fallback = "") {
   if (isNil(date)) return fallback;
   return dayjs(date).format(format);
 }
 
 // Parses an AWS-style cron expression and extracts day and formatted time
-export function parseCronExpression(
-  cronExpr: string,
-  durationInMinutes: number,
-) {
+export function parseCronExpression(cronExpr: string, durationInMinutes: number) {
   const cronRegex = /^cron\((\d+) (\d+) \? \* ([A-Z,]+|\*) \*\)$/;
   const match = cronExpr.match(cronRegex);
 
@@ -40,10 +33,7 @@ export function parseCronExpression(
   const endTime = startTime + durationInMinutes;
 
   return {
-    days:
-      days.at(0) === "*"
-        ? ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
-        : days,
+    days: days.at(0) === "*" ? ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"] : days,
     startTime,
     endTime,
   };

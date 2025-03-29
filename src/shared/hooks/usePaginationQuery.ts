@@ -2,7 +2,7 @@ import { keepPreviousData, UseQueryResult } from "@tanstack/react-query";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { AxiosError } from "axios";
 
-import { QueryProps } from "~/__generated__/api/types/base";
+import { QueryProps } from "~/__generated__/types/api-base.type";
 
 type BaseInput = { body: { page: number; size: number } };
 
@@ -12,9 +12,7 @@ type OmitPagination<T extends BaseInput> = Omit<T, "body"> &
     : { body?: Omit<T["body"], "page" | "size"> });
 
 export function usePaginationQuery<Response, Input extends BaseInput>(
-  useQueryHook: (
-    opts: QueryProps<Response, Input>,
-  ) => UseQueryResult<Response, AxiosError>,
+  useQueryHook: (opts: QueryProps<Response, Input>) => UseQueryResult<Response, AxiosError>,
   options: OmitPagination<Input> = {} as OmitPagination<Input>,
 ) {
   const navigate = useNavigate();

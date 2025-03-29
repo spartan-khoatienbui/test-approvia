@@ -9,15 +9,10 @@ type UploadAvatarProps = {
   onChange?: (value?: string) => void;
 };
 
-export function UploadAvatar({
-  value: outerValue,
-  onChange,
-}: UploadAvatarProps) {
+export function UploadAvatar({ value: outerValue, onChange }: UploadAvatarProps) {
   const [value, setValue] = useMergeState({ value: outerValue });
 
-  const handleCustomRequest: UploadProps["customRequest"] = async ({
-    file,
-  }) => {
+  const handleCustomRequest: UploadProps["customRequest"] = async ({ file }) => {
     const base64 = await toBase64(file);
     setValue(base64);
     onChange?.(base64);
@@ -26,11 +21,7 @@ export function UploadAvatar({
   return (
     <div className="flex items-center gap-4">
       <Avatar size={64} src={value} />
-      <Upload
-        showUploadList={false}
-        customRequest={handleCustomRequest}
-        allowExts={["jpg", "jpeg", "png"]}
-      >
+      <Upload showUploadList={false} customRequest={handleCustomRequest} allowExts={["jpg", "jpeg", "png"]}>
         <Button size="small">Upload</Button>
       </Upload>
     </div>

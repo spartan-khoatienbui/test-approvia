@@ -39,10 +39,7 @@ const convertDayNamesToAbbreviations = (days: Array<string>): string => {
   return abbrDays.join(",");
 };
 
-export const toEventBridgeCron = (
-  days: Array<string>,
-  time: string,
-): string => {
+export const toEventBridgeCron = (days: Array<string>, time: string): string => {
   validateTimeFormat(time);
   const [hourStr, minuteStr] = time.split(":");
   const dayField = convertDayNamesToAbbreviations(days);
@@ -51,15 +48,7 @@ export const toEventBridgeCron = (
 
 const parseDayOfWeekField = (dayOfWeekField: string): Array<string> => {
   if (dayOfWeekField === "*" || dayOfWeekField === "?") {
-    return [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ];
+    return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   } else if (dayOfWeekField.includes("-")) {
     const [start, end] = dayOfWeekField.split("-");
     const dayOrder = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -68,9 +57,7 @@ const parseDayOfWeekField = (dayOfWeekField: string): Array<string> => {
     if (startIndex === -1 || endIndex === -1) {
       throw new Error("Invalid day-of-week range in cron expression");
     }
-    return dayOrder
-      .slice(startIndex, endIndex + 1)
-      .map((abbr) => abbreviationToDayName[abbr]);
+    return dayOrder.slice(startIndex, endIndex + 1).map((abbr) => abbreviationToDayName[abbr]);
   } else if (dayOfWeekField.includes(",")) {
     const abbrs = dayOfWeekField.split(",");
     return abbrs.map((abbr) => {
@@ -89,9 +76,7 @@ const parseDayOfWeekField = (dayOfWeekField: string): Array<string> => {
   }
 };
 
-export const fromEventBridgeCron = (
-  cronExp: string,
-): { days: Array<string>; time: string } => {
+export const fromEventBridgeCron = (cronExp: string): { days: Array<string>; time: string } => {
   const prefix = "cron(";
   const suffix = ")";
   if (!cronExp.startsWith(prefix) || !cronExp.endsWith(suffix)) {
@@ -103,18 +88,9 @@ export const fromEventBridgeCron = (
   if (parts.length < 6) {
     throw new Error("Invalid cron expression, expected at least 6 fields");
   }
-  const [
-    minuteField,
-    hourField,
-    dayOfMonth,
-    _monthField,
-    dayOfWeekField,
-    _yearField,
-  ] = parts;
+  const [minuteField, hourField, dayOfMonth, _monthField, dayOfWeekField, _yearField] = parts;
   if (dayOfMonth !== "?") {
-    throw new Error(
-      "Expected day-of-month field to be '?' when day-of-week is specified",
-    );
+    throw new Error("Expected day-of-month field to be '?' when day-of-week is specified");
   }
 
   // Format time as "HH:mm" (zero-padded)

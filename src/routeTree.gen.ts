@@ -136,8 +136,7 @@ const PrivateRouteChildren: PrivateRouteChildren = {
   PrivateIndexRoute: PrivateIndexRoute,
 };
 
-const PrivateRouteWithChildren =
-  PrivateRoute._addFileChildren(PrivateRouteChildren);
+const PrivateRouteWithChildren = PrivateRoute._addFileChildren(PrivateRouteChildren);
 
 interface PublicRouteChildren {
   PublicPlaygroundRoute: typeof PublicPlaygroundRoute;
@@ -147,8 +146,7 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicPlaygroundRoute: PublicPlaygroundRoute,
 };
 
-const PublicRouteWithChildren =
-  PublicRoute._addFileChildren(PublicRouteChildren);
+const PublicRouteWithChildren = PublicRoute._addFileChildren(PublicRouteChildren);
 
 export interface FileRoutesByFullPath {
   "": typeof PublicRouteWithChildren;
@@ -179,12 +177,7 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths:
-    | ""
-    | "/sign-in"
-    | "/playground"
-    | "/"
-    | "/oauth2/$provider/callback";
+  fullPaths: "" | "/sign-in" | "/playground" | "/" | "/oauth2/$provider/callback";
   fileRoutesByTo: FileRoutesByTo;
   to: "" | "/sign-in" | "/playground" | "/" | "/oauth2/$provider/callback";
   id:
@@ -213,9 +206,7 @@ const rootRouteChildren: RootRouteChildren = {
   Oauth2ProviderCallbackRoute: Oauth2ProviderCallbackRoute,
 };
 
-export const routeTree = rootRoute
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>();
 
 /* ROUTE_MANIFEST_START
 {

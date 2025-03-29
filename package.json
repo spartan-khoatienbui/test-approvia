@@ -17,7 +17,7 @@
     "ci": "yarn format && yarn lint && yarn type-check",
     "prepare": "husky",
     "gen-icons": "node scripts/gen-icons.js",
-    "gen-api": "node scripts/gen-api",
+    "gen-api": "npx tsx scripts/gen-api/main.ts",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "preinstall": "npx only-allow yarn"
@@ -90,7 +90,12 @@
     "vite": "^6.1.1",
     "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.6",
+    "vitest": "^3.0.6"
+  },
+  "optionalDependencies": {
+    "chalk": "^5.4.1",
+    "openapi-types": "^12.1.3",
+    "ora": "^8.2.0",
     "yaml": "^2.7.0"
   },
   "engines": {

@@ -18,15 +18,8 @@ function AssetIcons() {
       <h2 className="mb-2 font-semibold">Click to copy!</h2>
       <div className="flex flex-wrap items-center justify-center">
         {Object.entries(icons).map(([key, Icon]) => (
-          <Tooltip
-            key={key}
-            title={`<${key} />`}
-            overlayClassName="text-sm text-mono"
-          >
-            <div
-              className="cursor-pointer border-[0.5px] p-2"
-              onClick={() => handleClickIcon(`<${key} />`)}
-            >
+          <Tooltip key={key} title={`<${key} />`} overlayClassName="text-sm text-mono">
+            <div className="cursor-pointer border-[0.5px] p-2" onClick={() => handleClickIcon(`<${key} />`)}>
               <Icon className="text-lg" />
             </div>
           </Tooltip>

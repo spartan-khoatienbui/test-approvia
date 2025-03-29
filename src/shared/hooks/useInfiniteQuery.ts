@@ -18,9 +18,7 @@ type UseInfiniteQueryProps<Response extends { count: number }> = Omit<
   "initialPageParam" | "getNextPageParam" | "getPreviousPageParam"
 >;
 
-export function useInfiniteQuery<Response extends { count: number }>(
-  props: UseInfiniteQueryProps<Response>,
-) {
+export function useInfiniteQuery<Response extends { count: number }>(props: UseInfiniteQueryProps<Response>) {
   return useTanstackInfiniteQuery({
     ...props,
     initialPageParam: { page: 0, size: 10 },
