@@ -61,7 +61,7 @@ export async function genQueryHook(opts: {
 
     export type ${hookPropsName} = QueryProps<${responseTypeName} ${hasInput ? `, ${inputTypeName}` : ""}>
 
-    export const ${genKeyFnName} = ( ${hasInput ? `input: DeepPartial<${inputTypeName}>` : ""} ) => ['${method}', '${endpoint}', ${hasInput ? `flattenObject(input)` : ""}]
+    export const ${genKeyFnName} = ( ${hasInput ? `input: DeepPartial<${inputTypeName}> = {}` : ""} ) => ['${method}', '${endpoint}', ${hasInput ? `flattenObject(input)` : ""}]
 
     export async function ${functionName}(${hasInput ? `{${destructInput}}: ${inputTypeName}` : ""}) {
       const { data } = await client<${responseTypeName}>({
