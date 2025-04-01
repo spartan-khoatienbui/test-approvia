@@ -14,7 +14,7 @@ import { OpenAPIV3 } from "openapi-types";
   const TASKS: Array<Task> = [
     {
       label: "Generate base types",
-      fn: genBaseType,
+      fn: () => genBaseType(),
     },
     {
       label: "Get swagger content",
